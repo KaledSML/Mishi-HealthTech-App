@@ -46,12 +46,12 @@ El desarrollo de este proyecto se rigió bajo la filosofía de mejora continua, 
 
 | Recurso | Descripción | Enlace |
 | :--- | :--- | :--- |
-| 🎬 **Pitch NTT DATA** | Presentación ganadora del 1.er Lugar | [Ver en YouTube]([https://youtu.be](https://youtu.be/dlXU_IahopU)) |
-| 🎤 **International Pitch** | Defensa del proyecto para la AUF (Français) | [Ver en YouTube]([https://www.youtube.com](https://www.youtube.com/watch?v=8aOUeTWVn2Y)) |
-| 📚 **Defensa de Tesis** | Diapositivas completas del examen de titulación | [Ver en Canva]([https://www.canva.com](https://www.canva.com/design/DAF6U6vitYE/0zKyGm7OvkUnQcgQr-ZSEQ/view?utm_content=DAF6U6vitYE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3f5075efb3)) |
-| 🎥 **Demos Técnicas** | Playlist con pruebas de funcionalidad prototipo final | [Ver en YouTube]([https://youtube.com_](https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=d8-paS87unS64Wbx)) |
-| 📐 **Prototipo UX (v0)** | Maquetación inicial e iteración en Figma | [Ver en Figma]([https://www.figma.com](https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?node-id=0%3A1)) |
-| 🖼️ **Póster Técnico** | Infografía de investigación y defensa académica | [Ver en Canva]([https://www.canva.com](https://www.canva.com/design/DAFQQn3b2iE/RtVOp0E_xpc-OG1yK17pew/view?utm_content=DAFQQn3b2iE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf264f8771a)) |
+| 🎬 **Pitch NTT DATA** | Presentación ganadora del 1.er Lugar | [Ver en YouTube](https://youtu.be/dlXU_IahopU) |
+| 🎤 **International Pitch** | Defensa del proyecto para la AUF (Français) | [Ver en YouTube](https://www.youtube.com/watch?v=8aOUeTWVn2Y) |
+| 📚 **Defensa de Tesis** | Diapositivas completas del examen de titulación | [Ver en Canva](https://www.canva.com/design/DAF6U6vitYE/0zKyGm7OvkUnQcgQr-ZSEQ/view?utm_content=DAF6U6vitYE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3f5075efb3) |
+| 🎥 **Demos Técnicas** | Playlist con pruebas de funcionalidad prototipo final | [Ver en YouTube](https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=d8-paS87unS64Wbx) |
+| 📐 **Prototipo UX (v0)** | Maquetación inicial e iteración en Figma | [Ver en Figma](https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?node-id=0%3A1) |
+| 🖼️ **Póster Técnico** | Infografía de investigación y defensa académica | [Ver en Canva](https://www.canva.com/design/DAFQQn3b2iE/RtVOp0E_xpc-OG1yK17pew/view?utm_content=DAFQQn3b2iE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf264f8771a) |
 
 ---
 ⚠️ *Aviso legal: Prototipo con fines académicos. No sustituye atención médica profesional.*
