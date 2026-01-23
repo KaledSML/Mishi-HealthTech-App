@@ -2,7 +2,6 @@
 
 ✨ **Estatus:** Prototipo Galardonado y Multidisciplinario
 🛠️ **Tecnologías:** Unity3D, OpenAI API, Python, MySQL
-📜 **Licencia:** MIT
 
 > **"Enamorarse del problema, no de la solución."** Una visión de ingeniería basada en la mejora continua y el bienestar humano.
 
