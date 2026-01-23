@@ -8,13 +8,15 @@
 
 ---
 
-## 🏆 Reconocimientos y Distinciones
+## 🏆 Reconocimientos y Distinciones junto a Mishi
 
-🥇 **1.er Lugar Nacional (2022):** Ganadora del concurso *"Creando Futuro: ¿Cómo te imaginas el futuro en 2100?"*, organizado por **NTT DATA** y la UBO. [Ver Pitch Ganador (YouTube)](https://youtu.be).
-
-🌍 **Semifinalista Internacional (2023):** Seleccionada en el concurso mundial *"60 secondes pour convaincre"* de la **AUF**. Defensa técnica realizada íntegramente en francés. [Ver Pitch en Francés (YouTube)](https://www.youtube.com).
+🥇 **1.er Lugar (2022):** Ganadora del concurso *"Creando Futuro: ¿Cómo te imaginas el futuro en 2100?"*, organizado por **NTT DATA** y la UBO. [Ver Pitch Ganador (YouTube)](https://youtu.be).
 
 🥈 **2.º Lugar (2022):** Galardonada en la *"3ª Jornada de Investigación, Emprendimiento e Innovación Estudiantil en Ingeniería"* (UBO).
+
+🌍 **Semifinalista Internacional (2022):** Seleccionada en el concurso mundial *"60 secondes pour convaincre"* de la **AUF**. Defensa técnica realizada íntegramente en francés. [Ver Pitch en Francés (YouTube)](https://www.youtube.com).
+
+
 
 ---
 
