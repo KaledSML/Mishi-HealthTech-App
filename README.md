@@ -11,7 +11,7 @@
 ## 🏆 Distinciones y Reconocimientos
 Mishi ha sido evaluado y premiado por comités de expertos internacionales:
 
-*   🥇 **1.er Lugar Nacional (2022):** Concurso *"Creando Futuro: 2100"* - Organizado por la multinacional **NTT DATA** y UBO.
+*   🥇 **1.er Lugar (2022):** Concurso *"Creando Futuro: 2100"* - Organizado por la multinacional **NTT DATA** y **UBO**.
 *   🥈 **2.º Lugar (2022):** *"3ª Jornada de Investigación e Innovación en Ingeniería"*.
 *   🌍 **Semifinalista Internacional (2022):** Concurso *"60 secondes pour convaincre"* de la **AUF** (Francia). Pitch defendido íntegramente en francés.
 
