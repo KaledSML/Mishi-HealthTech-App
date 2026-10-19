@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mishi · una aventura para cuidar tu salud mental</title>
+<meta name="description" content="Mishi es un videojuego 3D con asistente de IA, misiones de autocuidado y primeros auxilios psicológicos, pensado para estudiantes de educación superior.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff5f8;--surface:#fff;--ink:#1b2a4a;--muted:#5b6785;--line:#f2d9e2;--accent:#c23a68;--blue:#2c4a8c;--pink:#f7b6c8;--navy:#1b2a4a;
+  --font-d:"Baloo 2","Trebuchet MS",system-ui,sans-serif;--font-b:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* Para usar una captura propia: pon la ruta, ej. url(img/mundo.jpg) */
+  --hero-img:url(https://img.youtube.com/vi/1T1iKlbJVDI/maxresdefault.jpg);
+}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1830;--surface:#182648;--ink:#f4eefc;--muted:#aab4d2;--line:#2a3a63;--accent:#ff9fbd;--blue:#8fb0ff;--navy:#2c4a8c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--font-b);-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:10px}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--font-d);margin:0;line-height:1.1}
+p{margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+
+/* portada */
+.hero{position:relative;min-height:min(92dvh,760px);display:grid;place-items:center;text-align:center;color:#fff;
+  padding:calc(40px + env(safe-area-inset-top,0px)) 22px 56px;
+  background:linear-gradient(rgba(20,34,78,.7),rgba(16,26,60,.88)),var(--hero-img) center/cover,#14224e}
+.hero .in{display:grid;justify-items:center;gap:14px}
+.mishi{width:clamp(150px,26vh,230px);height:auto;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
+.sprout{transform-origin:120px 54px;animation:sway 3.6s ease-in-out infinite}
+.hero h1{font-size:clamp(3rem,9vw,5.2rem);font-weight:800;letter-spacing:-.01em}
+.hero p{max-width:34ch;font-size:1.2rem;color:#dfe6f5}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,.7);color:#fff}
+.btn.main{background:var(--pink);border-color:var(--pink);color:#1b2a4a}
+.btn:hover{transform:translateY(-2px)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+
+/* secciones */
+section{padding:76px 0}
+.head{margin-bottom:34px}
+.head h2{font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:800;margin-bottom:8px}
+.head p{color:var(--muted);max-width:52ch}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;cursor:pointer;background:#1a2440 center/cover no-repeat}
+.thumb::after{content:"▶";position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:var(--pink);color:#1b2a4a;display:grid;place-items:center;padding-left:4px;font-size:1.2rem;transition:transform .18s}
+.thumb:hover::after{transform:scale(1.1)}
+.card iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.card .t{padding:18px 20px 22px}
+.card h3{font-size:1.4rem;font-weight:800;margin-bottom:4px}
+.card p{color:var(--muted);font-size:.98rem}
+
+/* dato */
+.fact{background:var(--surface);border-block:1px solid var(--line);text-align:center}
+.fact .big{font:800 clamp(3rem,10vw,5rem)/1 var(--font-d);color:var(--blue)}
+.fact p{max-width:40ch;margin:10px auto 0;color:var(--muted)}
+.fact small{display:block;margin-top:10px;color:var(--muted);font-size:.82rem}
+
+/* enlaces */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.links a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-decoration:none;color:var(--ink);font-weight:700}
+.links a span{display:block;font-weight:400;color:var(--muted);font-size:.92rem}
+.links a:hover{border-color:var(--accent)}
+.links a.pri{background:var(--navy);border-color:var(--navy);color:#fff}
+.links a.pri span{color:inherit;opacity:.85}
+
+footer{padding:34px 0 calc(44px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:grid;gap:6px}
+
+@media (prefers-reduced-motion:reduce){.mishi,.sprout{animation:none}html{scroll-behavior:auto}.btn:hover,.thumb:hover::after{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="in">
+    <svg class="mishi" viewBox="0 -10 240 240" role="img" aria-label="Mishi, un personaje regordito con orejitas, cuerpo amarillo pálido y un brote en la cabeza">
+      <defs><radialGradient id="g" cx="40%" cy="32%" r="78%"><stop offset="0" stop-color="#fbf9cf"/><stop offset="1" stop-color="#e6e29a"/></radialGradient></defs>
+      <path d="M42 104 L50 38 Q52 30 59 34 L110 66 Z" fill="#ece8a2"/><path d="M55 92 L59 52 L92 72 Z" fill="#f4a3a8" opacity=".85"/>
+      <path d="M198 104 L190 38 Q188 30 181 34 L130 66 Z" fill="#ece8a2"/><path d="M185 92 L181 52 L148 72 Z" fill="#f4a3a8" opacity=".85"/>
+      <path d="M120 50C186 50 224 102 224 156c0 46-42 68-104 68S16 202 16 156C16 102 54 50 120 50Z" fill="url(#g)"/>
+      <g class="sprout">
+        <path d="M120 54Q119 34 122 18" fill="none" stroke="#7cc66a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M122 22C122 4 148 -1 159 9 153 23 135 27 122 22Z" fill="#f2d84a"/>
+        <path d="M120 32C120 19 102 14 93 21 97 32 110 36 120 32Z" fill="#f2d84a"/>
+      </g>
+      <ellipse cx="88" cy="132" rx="11" ry="14" fill="#1a1a24"/><circle cx="83.5" cy="126" r="4" fill="#fff"/><circle cx="92" cy="139" r="2" fill="#fff"/>
+      <ellipse cx="152" cy="132" rx="10" ry="13" fill="#1a1a24"/><circle cx="147.5" cy="126" r="3.7" fill="#fff"/><circle cx="156" cy="138" r="1.8" fill="#fff"/>
+      <ellipse cx="64" cy="160" rx="13" ry="8" fill="#f4a3a8" opacity=".8"/><ellipse cx="176" cy="160" rx="13" ry="8" fill="#f4a3a8" opacity=".8"/>
+    </svg>
+    <h1>Mishi</h1>
+    <p>Una aventura en 3D para cuidar tu salud mental mientras estudias.</p>
+    <div class="btns">
+      <a class="btn main" href="#juego">Ver el juego</a>
+      <a class="btn" href="#mas">Documentación</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="juego"><div class="wrap">
+  <div class="head">
+    <h2>Tres cosas que puedes hacer</h2>
+    <p>Mishi vive dentro de un mundo de fantasía. Esto es lo que encuentras en él.</p>
+  </div>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<section class="fact"><div class="wrap">
+  <div class="big">77,9 %</div>
+  <p>de las consultas estudiantiles en educación superior fueron por salud mental en 2022. En 2018 eran el 55,7 %.</p>
+  <small>Subsecretaría de Educación Superior, citada en la memoria de título.</small>
+</div></section>
+
+<section id="mas"><div class="wrap">
+  <div class="head">
+    <h2>Conoce más</h2>
+    <p>Mishi no es una terapia ni reemplaza a un profesional de salud mental: es un primer paso para pedir ayuda.</p>
+  </div>
+  <div class="links">
+    <a class="pri" href="https://github.com/KaledSML/Mishi-HealthTech-App">Documentación completa<span>Arquitectura, metodología y estándares</span></a>
+    <a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_">Playlist<span>Los 10 videos del proyecto</span></a>
+    <a href="https://www.canva.com/design/DAF6U6vitYE/0zKyGm7OvkUnQcgQr-ZSEQ/view">Memoria de tesis<span>Documento completo</span></a>
+    <a href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?node-id=0%3A1">Prototipo en Figma<span>Diseño de la experiencia</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>Finalista del concurso <i>60 secondes pour convaincre</i> (AUF) · 2º lugar en la defensa de póster, Semana de la Ingeniería UBO 2022 · UBO Inicia 2022.</p>
+  <p>Memoria para optar al título de Ingeniero en Informática, Universidad Bernardo O’Higgins. Código en reserva por propiedad intelectual.</p>
+  <p>Hecho con 💜 por <a href="https://www.youtube.com/@KaledSML">Kaled San Martin</a>.</p>
+</div></footer>
+
+<script>
+const FEATURES=[
+ ["pIdHgLZ9bTw","Conversa","Mishi escucha, te hace reír y te recomienda música. Funciona con IA de OpenAI."],
+ ["1hSqgYML_ww","Cumple misiones","Retos de autocuidado contados como aventura, pensados para que salgas a hacer cosas reales."],
+ ["qPd3npeGM_A","Respira","Un botón de pánico te lleva a una guía de primeros auxilios psicológicos. Mishi sabe dónde está."]
+];
+const cards=document.getElementById("cards");
+FEATURES.forEach(([id,title,text])=>{
+  const c=document.createElement("article");c.className="card";
+  const b=document.createElement("button");
+  b.className="thumb";b.type="button";b.setAttribute("aria-label","Reproducir video: "+title);
+  b.style.backgroundImage="url(https://img.youtube.com/vi/"+id+"/hqdefault.jpg)";
+  b.addEventListener("click",()=>{
+    const f=document.createElement("iframe");
+    f.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";
+    f.title=title;f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;
+    b.replaceWith(f);
+  });
+  const t=document.createElement("div");t.className="t";
+  const h=document.createElement("h3");h.textContent=title;
+  const p=document.createElement("p");p.textContent=text;
+  t.append(h,p);c.append(b,t);cards.append(c);
+});
+</script>
+</body>
+</html>
