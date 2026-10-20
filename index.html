@@ -1,168 +1,494 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mishi · una aventura para cuidar tu salud mental</title>
-<meta name="description" content="Mishi es un videojuego 3D con asistente de IA, misiones de autocuidado y primeros auxilios psicológicos, pensado para estudiantes de educación superior.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#fff5f8;--surface:#fff;--ink:#1b2a4a;--muted:#5b6785;--line:#f2d9e2;--accent:#c23a68;--blue:#2c4a8c;--pink:#f7b6c8;--navy:#1b2a4a;
-  --font-d:"Baloo 2","Trebuchet MS",system-ui,sans-serif;--font-b:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
-  /* Para usar una captura propia: pon la ruta, ej. url(img/mundo.jpg) */
-  --hero-img:url(https://img.youtube.com/vi/1T1iKlbJVDI/maxresdefault.jpg);
-}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1830;--surface:#182648;--ink:#f4eefc;--muted:#aab4d2;--line:#2a3a63;--accent:#ff9fbd;--blue:#8fb0ff;--navy:#2c4a8c}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--font-b);-webkit-font-smoothing:antialiased}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:10px}
-a{color:var(--accent)}
-h1,h2,h3{font-family:var(--font-d);margin:0;line-height:1.1}
-p{margin:0}
-.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
-
-/* portada */
-.hero{position:relative;min-height:min(92dvh,760px);display:grid;place-items:center;text-align:center;color:#fff;
-  padding:calc(40px + env(safe-area-inset-top,0px)) 22px 56px;
-  background:linear-gradient(rgba(20,34,78,.7),rgba(16,26,60,.88)),var(--hero-img) center/cover,#14224e}
-.hero .in{display:grid;justify-items:center;gap:14px}
-.mishi{width:clamp(150px,26vh,230px);height:auto;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
-.sprout{transform-origin:120px 54px;animation:sway 3.6s ease-in-out infinite}
-.hero h1{font-size:clamp(3rem,9vw,5.2rem);font-weight:800;letter-spacing:-.01em}
-.hero p{max-width:34ch;font-size:1.2rem;color:#dfe6f5}
-.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
-.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,.7);color:#fff}
-.btn.main{background:var(--pink);border-color:var(--pink);color:#1b2a4a}
-.btn:hover{transform:translateY(-2px)}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
-
-/* secciones */
-section{padding:76px 0}
-.head{margin-bottom:34px}
-.head h2{font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:800;margin-bottom:8px}
-.head p{color:var(--muted);max-width:52ch}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-.thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;cursor:pointer;background:#1a2440 center/cover no-repeat}
-.thumb::after{content:"▶";position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:var(--pink);color:#1b2a4a;display:grid;place-items:center;padding-left:4px;font-size:1.2rem;transition:transform .18s}
-.thumb:hover::after{transform:scale(1.1)}
-.card iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
-.card .t{padding:18px 20px 22px}
-.card h3{font-size:1.4rem;font-weight:800;margin-bottom:4px}
-.card p{color:var(--muted);font-size:.98rem}
-
-/* dato */
-.fact{background:var(--surface);border-block:1px solid var(--line);text-align:center}
-.fact .big{font:800 clamp(3rem,10vw,5rem)/1 var(--font-d);color:var(--blue)}
-.fact p{max-width:40ch;margin:10px auto 0;color:var(--muted)}
-.fact small{display:block;margin-top:10px;color:var(--muted);font-size:.82rem}
-
-/* enlaces */
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.links a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-decoration:none;color:var(--ink);font-weight:700}
-.links a span{display:block;font-weight:400;color:var(--muted);font-size:.92rem}
-.links a:hover{border-color:var(--accent)}
-.links a.pri{background:var(--navy);border-color:var(--navy);color:#fff}
-.links a.pri span{color:inherit;opacity:.85}
-
-footer{padding:34px 0 calc(44px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-footer .wrap{display:grid;gap:6px}
-
-@media (prefers-reduced-motion:reduce){.mishi,.sprout{animation:none}html{scroll-behavior:auto}.btn:hover,.thumb:hover::after{transform:none}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171126">
+  <meta name="description" content="Mishi: una experiencia de juego, IA conversacional y autocuidado diseñada como proyecto de titulación.">
+  <title>Mishi — Un pequeño refugio en un mundo mágico</title>
+  <style>
+    :root {
+      --night: #171126;
+      --night-2: #211638;
+      --plum: #35234f;
+      --violet: #9b7bff;
+      --lavender: #d9ccff;
+      --pink: #ffb9df;
+      --mint: #b8f1df;
+      --cream: #fff8ef;
+      --muted: #c9bfdc;
+      --line: rgba(230, 219, 255, .18);
+      --panel: rgba(255, 255, 255, .065);
+      --shadow: 0 24px 80px rgba(0,0,0,.26);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--cream); background: var(--night);
+      font-family: ui-rounded, "Avenir Next", Avenir, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -3; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(123, 83, 198, .26), transparent 34%),
+        radial-gradient(ellipse at 86% 36%, rgba(71, 128, 154, .13), transparent 30%),
+        linear-gradient(180deg, #171126 0%, #201532 48%, #171126 100%);
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 1rem; top: 1rem; z-index: 100; padding: .8rem; background: white; color: black; }
+    .stars, .stars::before, .stars::after {
+      position: fixed; inset: 0; pointer-events: none; z-index: -2;
+      content: ""; opacity: .5;
+      background-image:
+        radial-gradient(2px 2px at 7% 19%, #fff 45%, transparent 55%),
+        radial-gradient(1px 1px at 19% 68%, #fff 45%, transparent 55%),
+        radial-gradient(2px 2px at 31% 32%, #d9ccff 45%, transparent 55%),
+        radial-gradient(1px 1px at 48% 11%, #fff 45%, transparent 55%),
+        radial-gradient(2px 2px at 68% 54%, #fff 45%, transparent 55%),
+        radial-gradient(1px 1px at 79% 24%, #d9ccff 45%, transparent 55%),
+        radial-gradient(2px 2px at 93% 78%, #fff 45%, transparent 55%);
+      background-size: 440px 360px;
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    .stars::before { transform: translateY(20px); opacity: .4; animation-delay: -3s; }
+    .stars::after { transform: translateY(-25px); opacity: .25; animation-delay: -5s; }
+    @keyframes twinkle { from { opacity: .18; } to { opacity: .62; } }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(155,123,255,.22); } 50% { box-shadow: 0 0 0 16px rgba(155,123,255,0); } }
+    @keyframes drift { from { transform: translateX(-5px) rotate(-4deg); } to { transform: translateX(8px) rotate(5deg); } }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(23,17,38,.78); border-bottom: 1px solid var(--line); }
+    nav { display: flex; align-items: center; justify-content: space-between; min-height: 74px; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; font-weight: 900; letter-spacing: -.04em; font-size: 1.2rem; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 14px; background: linear-gradient(145deg, #bba4ff, #7554bd); box-shadow: 0 8px 30px #7e5cc044; color: #211638; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-links a { font-size: .9rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: white; }
+    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 12px; color: white; background: var(--panel); padding: .5rem .75rem; }
+    .hero { position: relative; padding: 88px 0 70px; min-height: 620px; display: grid; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2rem; }
+    .eyebrow { display: inline-flex; gap: .55rem; align-items: center; color: var(--mint); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; font-weight: 800; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(3.5rem, 8vw, 6.8rem); line-height: .94; letter-spacing: -.075em; margin: 1rem 0 1.35rem; }
+    h1 span { color: var(--lavender); text-shadow: 0 0 44px rgba(155,123,255,.28); }
+    .hero p { max-width: 580px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.18rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; border-radius: 999px; padding: .85rem 1.25rem; text-decoration: none; font-weight: 800; font-size: .92rem; border: 1px solid transparent; transition: transform .2s, background .2s, border-color .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: #211638; background: linear-gradient(120deg, #e4d9ff, #b7a0ff); box-shadow: 0 10px 34px rgba(155,123,255,.24); }
+    .btn-secondary { color: white; background: rgba(255,255,255,.05); border-color: var(--line); }
+    .hero-art { min-height: 430px; display: grid; place-items: center; position: relative; }
+    .moon { width: min(340px, 75vw); aspect-ratio: 1; border-radius: 50%; position: absolute; background: radial-gradient(circle at 35% 30%, #f7edff 0%, #d3bdff 18%, #9b7bff 50%, #5b408f 75%); box-shadow: 0 0 75px rgba(155,123,255,.22), inset -25px -20px 60px rgba(40,22,73,.5); opacity: .86; }
+    .moon::after { content: ""; position: absolute; inset: 10%; border: 1px solid rgba(255,255,255,.23); border-radius: 50%; }
+    .orbit { position: absolute; width: 420px; max-width: 100%; aspect-ratio: 1; border: 1px solid rgba(220,206,255,.22); border-radius: 50%; transform: rotate(-25deg) scaleY(.42); }
+    .orbit::before { content: "✦"; position: absolute; top: 12%; left: 17%; color: var(--mint); font-size: 1.5rem; }
+    .orbit::after { content: "✧"; position: absolute; bottom: 13%; right: 16%; color: var(--pink); font-size: 2rem; }
+    .cat-wrap { position: relative; z-index: 2; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 22px 18px rgba(22,10,44,.35)); }
+    .cat { width: 220px; height: 230px; position: relative; }
+    .cat-body { position: absolute; bottom: 5px; left: 36px; width: 150px; height: 142px; border-radius: 48% 48% 42% 42%; background: linear-gradient(145deg,#f7dfff,#bda3f8 56%,#8666cb); box-shadow: inset -13px -12px 20px rgba(78,47,123,.25), inset 8px 7px 15px rgba(255,255,255,.45); }
+    .ear { position: absolute; top: 15px; width: 70px; height: 95px; background: linear-gradient(145deg,#e9d9ff,#a78be8); clip-path: polygon(50% 0,100% 100%,0 100%); }
+    .ear.left { left: 35px; transform: rotate(-13deg); }
+    .ear.right { right: 35px; transform: rotate(13deg); }
+    .ear::after { content: ""; position: absolute; top: 25px; left: 20px; width: 32px; height: 54px; background: #e9a9d9; clip-path: polygon(50% 0,100% 100%,0 100%); }
+    .face { position: absolute; top: 48px; left: 24px; width: 172px; height: 143px; border-radius: 46% 46% 48% 48%; background: linear-gradient(145deg,#fff0ff,#c8b3fa 68%,#a18ade); box-shadow: inset -8px -9px 15px rgba(78,47,123,.16); }
+    .eye { position: absolute; top: 58px; width: 12px; height: 18px; border-radius: 50%; background: #40305c; }
+    .eye.left { left: 42px; } .eye.right { right: 42px; }
+    .shine { position: absolute; width: 4px; height: 5px; background: white; border-radius: 50%; top: 3px; left: 3px; }
+    .cheek { position: absolute; top: 83px; width: 22px; height: 10px; background: #f6a9d8; border-radius: 50%; opacity: .75; }
+    .cheek.left { left: 23px; } .cheek.right { right: 23px; }
+    .nose { position: absolute; top: 81px; left: 82px; width: 9px; height: 7px; background: #d879bd; border-radius: 40% 40% 60% 60%; }
+    .mouth { position: absolute; top: 88px; left: 77px; width: 20px; height: 12px; border-bottom: 2px solid #6d4e8c; border-radius: 0 0 50% 50%; }
+    .whisker { position: absolute; top: 87px; width: 25px; height: 1px; background: rgba(109,78,140,.55); }
+    .whisker.l1 { left: 5px; transform: rotate(8deg); } .whisker.l2 { left: 5px; top: 96px; transform: rotate(-8deg); }
+    .whisker.r1 { right: 5px; transform: rotate(-8deg); } .whisker.r2 { right: 5px; top: 96px; transform: rotate(8deg); }
+    .chest { position: absolute; bottom: 8px; left: 50px; width: 54px; height: 48px; border-radius: 50% 50% 42% 42%; background: #f7eaff; }
+    .tail { position: absolute; right: 6px; bottom: 15px; width: 70px; height: 84px; border: 17px solid #a58be4; border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; transform: rotate(27deg); }
+    .floating-note { position: absolute; padding: .7rem .9rem; border: 1px solid rgba(255,255,255,.18); background: rgba(33,22,56,.76); backdrop-filter: blur(10px); border-radius: 16px; color: var(--lavender); box-shadow: var(--shadow); font-size: .85rem; animation: drift 4s ease-in-out infinite alternate; }
+    .note-one { top: 15%; left: 0; } .note-two { bottom: 13%; right: 0; animation-delay: -2s; color: var(--mint); }
+    .scroll-cue { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); color: #a99cbd; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; }
+    section { padding: 86px 0; }
+    .section-head { max-width: 720px; margin-bottom: 2rem; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.06; letter-spacing: -.055em; margin: .7rem 0 1rem; }
+    .section-head p { color: var(--muted); max-width: 670px; }
+    .section-kicker { color: var(--mint); font-weight: 800; font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .card { background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; position: relative; overflow: hidden; transition: transform .25s, border-color .25s, background .25s; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(217,204,255,.45); background: rgba(255,255,255,.085); }
+    .card-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 17px; background: rgba(155,123,255,.15); font-size: 1.6rem; margin-bottom: 1rem; }
+    .card h3 { margin-bottom: .5rem; font-size: 1.25rem; }
+    .card p { color: var(--muted); font-size: .94rem; margin-bottom: 0; }
+    .tag { display: inline-flex; padding: .3rem .6rem; border-radius: 999px; border: 1px solid var(--line); color: var(--lavender); font-size: .72rem; font-weight: 750; margin-bottom: .8rem; }
+    .notice { margin-top: 1.2rem; padding: 1rem 1.15rem; border-left: 3px solid var(--pink); background: rgba(255,185,223,.07); border-radius: 0 14px 14px 0; color: #e9ddeb; font-size: .92rem; }
+    .showcase { display: grid; grid-template-columns: .85fr 1.15fr; gap: 2rem; align-items: start; }
+    .showcase-copy { position: sticky; top: 105px; }
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .video-card { border-radius: 20px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); }
+    .video-card a { display: block; position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg,#49346d,#211638); }
+    .video-card img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .88; transition: transform .35s, opacity .35s; }
+    .video-card a:hover img { transform: scale(1.04); opacity: 1; }
+    .play { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2rem; text-shadow: 0 3px 20px #000; }
+    .video-info { padding: .9rem 1rem 1rem; }
+    .video-info h3 { font-size: .95rem; margin: 0 0 .2rem; }
+    .video-info p { color: var(--muted); font-size: .8rem; margin: 0; }
+    .timeline { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: .7rem; }
+    .timeline::before { content: ""; position: absolute; top: 18px; left: 5%; right: 5%; height: 1px; background: linear-gradient(90deg,var(--violet),var(--mint)); opacity: .5; }
+    .step { position: relative; padding-top: 3.2rem; }
+    .step::before { content: ""; position: absolute; top: 10px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--night); border: 3px solid var(--violet); box-shadow: 0 0 18px rgba(155,123,255,.4); }
+    .step h3 { font-size: 1rem; margin-bottom: .35rem; }
+    .step p { font-size: .85rem; color: var(--muted); }
+    .accordion { display: grid; gap: .75rem; }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+    summary { list-style: none; cursor: pointer; padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-weight: 800; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--lavender); font-size: 1.35rem; transition: transform .2s; }
+    details[open] summary::after { content: "−"; }
+    .detail-body { padding: 0 1.25rem 1.25rem; color: var(--muted); }
+    .detail-body p:last-child { margin-bottom: 0; }
+    .detail-body ul { padding-left: 1.25rem; }
+    .detail-body li { margin: .35rem 0; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .tech-list span { padding: .55rem .8rem; border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid var(--line); font-size: .86rem; }
+    .link-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; }
+    .link-card { display: flex; flex-direction: column; min-height: 145px; justify-content: space-between; padding: 1rem; text-decoration: none; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; transition: transform .2s,border-color .2s; }
+    .link-card:hover { transform: translateY(-4px); border-color: var(--violet); }
+    .link-card strong { font-size: .95rem; }
+    .link-card span { color: var(--muted); font-size: .8rem; }
+    .recognitions { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .recognition { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem; border-radius: 17px; background: var(--panel); border: 1px solid var(--line); }
+    .recognition b { display: block; margin-bottom: .2rem; }
+    .recognition p { color: var(--muted); margin: 0; font-size: .86rem; }
+    .caution { border: 1px solid rgba(255,185,223,.3); background: linear-gradient(120deg, rgba(255,185,223,.08), rgba(155,123,255,.07)); border-radius: 24px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .caution .symbol { font-size: 1.7rem; }
+    .caution h3 { margin-bottom: .4rem; }
+    .caution p { color: var(--muted); margin: 0; }
+    .future-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; }
+    .future { padding: 1rem; border-radius: 17px; border: 1px dashed rgba(217,204,255,.28); background: rgba(255,255,255,.025); }
+    .future strong { display: block; margin: .45rem 0 .25rem; }
+    .future p { color: var(--muted); font-size: .84rem; margin: 0; }
+    footer { border-top: 1px solid var(--line); padding: 2.5rem 0; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; }
+    .footer-inner p { margin: 0; }
+    .backtop { color: var(--lavender); text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .small-note { color: #a99cbd; font-size: .8rem; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 850px) {
+      .hero-grid, .showcase { grid-template-columns: 1fr; }
+      .hero { padding-top: 60px; }
+      .hero-art { min-height: 350px; }
+      .moon { width: 280px; }
+      .orbit { width: 350px; }
+      .showcase-copy { position: static; }
+      .cards { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; gap: .3rem; padding-left: 1.6rem; }
+      .timeline::before { top: 8px; bottom: 15px; left: 8px; right: auto; width: 1px; height: auto; }
+      .step { padding: 0 0 1rem; }
+      .step::before { top: 5px; left: -1.6rem; }
+      .link-grid, .future-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display: none; position: absolute; top: 74px; left: 0; right: 0; padding: 1rem 20px 1.3rem; background: rgba(23,17,38,.97); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: inline-flex; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      section { padding: 62px 0; }
+      .hero { min-height: auto; padding: 55px 0 70px; }
+      .hero-art { min-height: 300px; }
+      .cat { transform: scale(.82); }
+      .note-one { left: -2px; top: 10%; } .note-two { right: -2px; bottom: 6%; }
+      .video-grid, .recognitions { grid-template-columns: 1fr; }
+      .link-grid, .future-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .caution { padding: 1.1rem; }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="nav-wrap">
+    <nav class="wrap" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Mishi, inicio"><span class="brand-mark">✦</span> mishi<span style="color:var(--lavender)">.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menú</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#funciones">El Mishi-verso</a>
+        <a href="#demo">Demostraciones</a>
+        <a href="#bitacora">Bitácora</a>
+        <a href="#documentos">Archivo</a>
+      </div>
+    </nav>
+  </div>
 
-<header class="hero">
-  <div class="in">
-    <svg class="mishi" viewBox="0 -10 240 240" role="img" aria-label="Mishi, un personaje regordito con orejitas, cuerpo amarillo pálido y un brote en la cabeza">
-      <defs><radialGradient id="g" cx="40%" cy="32%" r="78%"><stop offset="0" stop-color="#fbf9cf"/><stop offset="1" stop-color="#e6e29a"/></radialGradient></defs>
-      <path d="M42 104 L50 38 Q52 30 59 34 L110 66 Z" fill="#ece8a2"/><path d="M55 92 L59 52 L92 72 Z" fill="#f4a3a8" opacity=".85"/>
-      <path d="M198 104 L190 38 Q188 30 181 34 L130 66 Z" fill="#ece8a2"/><path d="M185 92 L181 52 L148 72 Z" fill="#f4a3a8" opacity=".85"/>
-      <path d="M120 50C186 50 224 102 224 156c0 46-42 68-104 68S16 202 16 156C16 102 54 50 120 50Z" fill="url(#g)"/>
-      <g class="sprout">
-        <path d="M120 54Q119 34 122 18" fill="none" stroke="#7cc66a" stroke-width="5" stroke-linecap="round"/>
-        <path d="M122 22C122 4 148 -1 159 9 153 23 135 27 122 22Z" fill="#f2d84a"/>
-        <path d="M120 32C120 19 102 14 93 21 97 32 110 36 120 32Z" fill="#f2d84a"/>
-      </g>
-      <ellipse cx="88" cy="132" rx="11" ry="14" fill="#1a1a24"/><circle cx="83.5" cy="126" r="4" fill="#fff"/><circle cx="92" cy="139" r="2" fill="#fff"/>
-      <ellipse cx="152" cy="132" rx="10" ry="13" fill="#1a1a24"/><circle cx="147.5" cy="126" r="3.7" fill="#fff"/><circle cx="156" cy="138" r="1.8" fill="#fff"/>
-      <ellipse cx="64" cy="160" rx="13" ry="8" fill="#f4a3a8" opacity=".8"/><ellipse cx="176" cy="160" rx="13" ry="8" fill="#f4a3a8" opacity=".8"/>
-    </svg>
-    <h1>Mishi</h1>
-    <p>Una aventura en 3D para cuidar tu salud mental mientras estudias.</p>
-    <div class="btns">
-      <a class="btn main" href="#juego">Ver el juego</a>
-      <a class="btn" href="#mas">Documentación</a>
+  <main id="contenido">
+    <header class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Proyecto de titulación · UBO</div>
+          <h1>Un pequeño<br>refugio en<br>un mundo <span>mágico.</span></h1>
+          <p><strong style="color:var(--cream)">Mishi</strong> es un prototipo de videojuego-aplicación que explora cómo la IA conversacional, la gamificación y recursos de autocuidado pueden acercarse a estudiantes de educación superior.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#funciones">Explorar el Mishi-verso <span>✦</span></a>
+            <a class="btn btn-secondary" href="#demo">▶ Ver demostraciones</a>
+          </div>
+          <p class="small-note" style="margin-top:1rem">Una experiencia documentada desde la idea hasta el MVP local.</p>
+        </div>
+        <div class="hero-art" aria-label="Ilustración decorativa de un gato mágico">
+          <div class="moon"></div><div class="orbit"></div>
+          <div class="cat-wrap" aria-hidden="true">
+            <div class="cat">
+              <div class="tail"></div><div class="ear left"></div><div class="ear right"></div>
+              <div class="cat-body"><div class="chest"></div></div>
+              <div class="face">
+                <div class="eye left"><i class="shine"></i></div><div class="eye right"><i class="shine"></i></div>
+                <div class="cheek left"></div><div class="cheek right"></div><div class="nose"></div><div class="mouth"></div>
+                <div class="whisker l1"></div><div class="whisker l2"></div><div class="whisker r1"></div><div class="whisker r2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-note note-one">✧ Un lugar para respirar</div>
+          <div class="floating-note note-two">♡ Pequeñas misiones, fuera de pantalla</div>
+        </div>
+      </div>
+      <div class="scroll-cue">Desliza para descubrir <span>↓</span></div>
+    </header>
+
+    <section id="funciones">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">Tu aventura comienza aquí</div>
+          <h2>Tres caminos.<br>Una misma intención.</h2>
+          <p>Mishi reúne una experiencia de exploración en tercera persona con recursos de acompañamiento y actividades de autocuidado. Cada pieza responde a una necesidad distinta del diseño.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-icon">☾</div><span class="tag">IA conversacional</span>
+            <h3>Habla con Mishi</h3>
+            <p>Un asistente virtual integrado como personaje no jugable (NPC), pensado para conversar, distraer y orientar hacia recursos de apoyo dentro de la experiencia.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">✦</div><span class="tag">Gamificación</span>
+            <h3>Misiones de autocuidado</h3>
+            <p>Misiones narradas con lenguaje de aventura que invitan a realizar actividades en el mundo real. El diseño se inspira en Octalysis y en el concepto del “cuarteto de la felicidad”.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">♡</div><span class="tag">Acceso a apoyo</span>
+            <h3>Botón de pánico</h3>
+            <p>Un acceso rápido a un recurso audiovisual de primeros auxilios psicológicos, pensado para reducir los pasos necesarios para encontrar una guía de apoyo.</p>
+          </article>
+        </div>
+        <div class="notice reveal"><strong>Nota de alcance:</strong> el prototipo no es una terapia ni sustituye la atención de profesionales de salud mental. Esta vitrina documenta el diseño y desarrollo del proyecto; no afirma eficacia clínica demostrada.</div>
+      </div>
+    </section>
+
+    <section id="demo" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.025),transparent)">
+      <div class="wrap showcase">
+        <div class="showcase-copy reveal">
+          <div class="section-kicker">Ventana al prototipo</div>
+          <h2 style="font-size:clamp(2rem,4vw,3.1rem);line-height:1.05;letter-spacing:-.055em;margin:.7rem 0 1rem">Mishi en acción</h2>
+          <p style="color:var(--muted)">De las primeras pruebas de concepto a la experiencia en Unity 3D. Abre cualquier video para ver la evidencia audiovisual disponible.</p>
+          <a class="btn btn-secondary" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_" target="_blank" rel="noopener noreferrer">Ver playlist completa ↗</a>
+          <p class="small-note" style="margin-top:1rem">Los videos se abren en YouTube. Las miniaturas se cargan desde YouTube.</p>
+        </div>
+        <div class="video-grid reveal">
+          <article class="video-card">
+            <a href="https://youtu.be/1T1iKlbJVDI" target="_blank" rel="noopener noreferrer" aria-label="Ver entorno inmersivo en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/1T1iKlbJVDI/hqdefault.jpg" alt="Miniatura de control de movimiento en Unity"><span class="play">▶</span></a>
+            <div class="video-info"><h3>Entorno inmersivo</h3><p>Movimiento, avatar y NPCs</p></div>
+          </article>
+          <article class="video-card">
+            <a href="https://youtu.be/pIdHgLZ9bTw" target="_blank" rel="noopener noreferrer" aria-label="Ver integración OpenAI en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/pIdHgLZ9bTw/hqdefault.jpg" alt="Miniatura de integración OpenAI"><span class="play">▶</span></a>
+            <div class="video-info"><h3>Integración OpenAI</h3><p>Prueba del asistente conversacional</p></div>
+          </article>
+          <article class="video-card">
+            <a href="https://youtu.be/1hSqgYML_ww" target="_blank" rel="noopener noreferrer" aria-label="Ver sistema de misiones en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/1hSqgYML_ww/hqdefault.jpg" alt="Miniatura del sistema de misiones"><span class="play">▶</span></a>
+            <div class="video-info"><h3>Sistema de misiones</h3><p>Mecánicas de gamificación</p></div>
+          </article>
+          <article class="video-card">
+            <a href="https://youtu.be/qPd3npeGM_A" target="_blank" rel="noopener noreferrer" aria-label="Ver prueba del botón de pánico en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/qPd3npeGM_A/hqdefault.jpg" alt="Miniatura de prueba del botón de pánico"><span class="play">▶</span></a>
+            <div class="video-info"><h3>Botón de pánico</h3><p>Acceso al recurso de apoyo</p></div>
+          </article>
+          <article class="video-card">
+            <a href="https://youtu.be/zg57-NAUB-Q" target="_blank" rel="noopener noreferrer" aria-label="Ver recurso de primeros auxilios psicológicos en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/zg57-NAUB-Q/hqdefault.jpg" alt="Miniatura de primeros auxilios psicológicos"><span class="play">▶</span></a>
+            <div class="video-info"><h3>Recurso de PAP</h3><p>Guía audiovisual del prototipo</p></div>
+          </article>
+          <article class="video-card">
+            <a href="https://youtu.be/_cfLRPfI7u8" target="_blank" rel="noopener noreferrer" aria-label="Ver MVP en WordPress en YouTube"><img loading="lazy" src="https://img.youtube.com/vi/_cfLRPfI7u8/hqdefault.jpg" alt="Miniatura de Mishi versión WordPress"><span class="play">▶</span></a>
+            <div class="video-info"><h3>El primer MVP</h3><p>Validación funcional temprana en WordPress</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="bitacora">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">La bitácora del proyecto</div>
+          <h2>Una idea que fue tomando forma.</h2>
+          <p>El proceso combinó investigación de usuarios, prototipado y aprendizaje a partir de pruebas y presentaciones. Esta línea de tiempo resume las etapas descritas en la memoria.</p>
+        </div>
+        <div class="timeline">
+          <article class="step reveal"><h3>Empatizar</h3><p>Encuesta exploratoria a estudiantes y construcción de una persona usuaria.</p></article>
+          <article class="step reveal"><h3>Definir</h3><p>Problema, propuesta de valor y necesidades a abordar.</p></article>
+          <article class="step reveal"><h3>Idear</h3><p>Exploración de ideas, modelos y mecánicas de motivación.</p></article>
+          <article class="step reveal"><h3>Prototipar</h3><p>Figma, prototipos iniciales, MVP web y entorno 3D.</p></article>
+          <article class="step reveal"><h3>Testear</h3><p>Pruebas funcionales y feedback en distintas instancias.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="archivo" style="background:rgba(255,255,255,.02)">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">Detrás de la magia</div>
+          <h2>El archivo del proyecto</h2>
+          <p>La documentación técnica y académica, organizada para explorarla cuando quieras profundizar.</p>
+        </div>
+        <div class="accordion">
+          <details class="reveal">
+            <summary>🧠 Diseño del asistente con IA</summary>
+            <div class="detail-body">
+              <p>La propuesta integra la API de OpenAI en Unity y presenta a Mishi como NPC dentro de un entorno de fantasía. La personalidad del asistente y la integración se exploraron mediante iteraciones y pruebas de interfaz.</p>
+              <p><a href="https://youtu.be/JL9prLLMgMA" target="_blank" rel="noopener noreferrer">Interfaz de chat temprana ↗</a> · <a href="https://youtu.be/pIdHgLZ9bTw" target="_blank" rel="noopener noreferrer">Integración OpenAI ↗</a></p>
+              <p class="small-note">El bosquejo del proyecto identifica GPT-3.5 Turbo; la disponibilidad de modelos y APIs puede cambiar con el tiempo.</p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>🏆 Gamificación y misiones</summary>
+            <div class="detail-body">
+              <p>El diseño de misiones se inspira en el framework Octalysis de Yu-kai Chou y en el concepto popularizado como “cuarteto de la felicidad” en la obra de Loretta G. Breuning. Las actividades invitan a salir de la pantalla y realizar acciones cotidianas.</p>
+              <ul><li><strong>Dopamina:</strong> asociada en el marco divulgativo a metas y logros.</li><li><strong>Serotonina:</strong> vinculada en el material de referencia con actividades como ejercicio o tiempo al aire libre.</li><li><strong>Endorfinas:</strong> relacionadas con actividades como reír o moverse.</li><li><strong>Oxitocina:</strong> relacionada con conexión social y gestos de afecto.</li></ul>
+              <p class="small-note">Estas asociaciones forman parte del marco conceptual de diseño; no son mediciones neuroquímicas ni resultados clínicos del MVP.</p>
+              <p><a href="https://youtu.be/1hSqgYML_ww" target="_blank" rel="noopener noreferrer">Ver sistema de misiones ↗</a></p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>🚨 Botón de pánico y primeros auxilios psicológicos</summary>
+            <div class="detail-body">
+              <p>El diseño inicial describe una guía sensorial con respiración triangular y anclaje al presente. En el MVP descrito en tu bosquejo, el botón reproduce un video de primeros auxilios psicológicos. Son dos niveles distintos: propuesta de diseño y comportamiento documentado del prototipo.</p>
+              <p><a href="https://youtu.be/qPd3npeGM_A" target="_blank" rel="noopener noreferrer">Prueba del botón ↗</a> · <a href="https://youtu.be/zg57-NAUB-Q" target="_blank" rel="noopener noreferrer">Recurso audiovisual ↗</a></p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>🛠️ Tecnologías y herramientas</summary>
+            <div class="detail-body">
+              <p>Según la documentación compartida, estas son las tecnologías y herramientas principales asociadas al desarrollo y a los prototipos:</p>
+              <div class="tech-list"><span>Unity 3D</span><span>C#</span><span>API de OpenAI</span><span>VRoid Studio</span><span>UniVRM</span><span>Figma</span><span>WordPress</span><span>Trello / Kanban</span><span>XAMPP + MySQL (contexto de desarrollo)</span></div>
+              <p class="small-note">La presencia de una herramienta en el proceso no implica que todas las funcionalidades relacionadas hayan quedado integradas en el MVP final.</p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>🧪 Pruebas, feedback y validación</summary>
+            <div class="detail-body">
+              <p>La memoria documenta pruebas de funcionalidades y movimiento, además de una experiencia de prueba con una segunda persona y presentaciones del proyecto. El material audiovisual ofrece evidencia del comportamiento mostrado en cada grabación.</p>
+              <p>Estas instancias apoyan la documentación de funcionamiento y recepción cualitativa; no equivalen a un ensayo clínico ni demuestran por sí mismas una reducción de ansiedad.</p>
+              <p><a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_" target="_blank" rel="noopener noreferrer">Consultar la playlist de evidencias ↗</a></p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>🧭 Arquitectura, requisitos y ética</summary>
+            <div class="detail-body">
+              <p>El proyecto documenta requisitos funcionales y no funcionales, diagramas de arquitectura y decisiones de diseño. La vitrina pública presenta una síntesis de alto nivel y no expone el código fuente ni credenciales privadas.</p>
+              <p>La privacidad, la seguridad, la mantenibilidad y la delimitación del alcance de una herramienta de bienestar son aspectos importantes del contexto del proyecto.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="documentos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">Portales y recuerdos</div>
+          <h2>Continúa explorando</h2>
+          <p>Material complementario del proyecto. Los enlaces se abren en sus plataformas originales.</p>
+        </div>
+        <div class="link-grid reveal">
+          <a class="link-card" href="https://www.canva.com/design/DAF6U6vitYE/0zKyGm7OvkUnQcgQr-ZSEQ/view" target="_blank" rel="noopener noreferrer"><strong>📚 Memoria de tesis</strong><span>Documento académico ↗</span></a>
+          <a class="link-card" href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?node-id=0%3A1" target="_blank" rel="noopener noreferrer"><strong>🎨 Prototipo UX</strong><span>Diseño en Figma ↗</span></a>
+          <a class="link-card" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_" target="_blank" rel="noopener noreferrer"><strong>🎬 Videoteca</strong><span>Playlist de demostraciones ↗</span></a>
+          <a class="link-card" href="https://www.youtube.com/@KaledSML" target="_blank" rel="noopener noreferrer"><strong>▶ Canal de YouTube</strong><span>@KaledSML ↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reconocimientos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">Pequeñas estrellas en el camino</div>
+          <h2>Reconocimientos y espacios de difusión</h2>
+        </div>
+        <div class="recognitions reveal">
+          <div class="recognition"><span>🌍</span><div><b>Finalista · 60 secondes pour convaincre</b><p>Segunda edición, Agence Universitaire de la Francophonie.</p><a href="https://www.youtube.com/watch?v=8aOUeTWVn2Y" target="_blank" rel="noopener noreferrer">Ver video ↗</a></div></div>
+          <div class="recognition"><span>🔬</span><div><b>Defensa de póster · UBO 2022</b><p>Segundo lugar en la Semana de la Ingeniería UBO, según el registro del proyecto.</p></div></div>
+          <div class="recognition"><span>🚀</span><div><b>UBO Inicia 2022</b><p>Presentación de prueba de concepto y validación en terreno.</p><a href="https://youtu.be/fpMdAi5Nn0o" target="_blank" rel="noopener noreferrer">Ver video ↗</a></div></div>
+          <div class="recognition"><span>✨</span><div><b>Otras participaciones</b><p>El bosquejo también menciona NTT DATA & UBO y Festival del Pitch. Conviene enlazar evidencia específica si está disponible.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="futuro">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">El mapa de lo que viene</div>
+          <h2>La aventura puede continuar.</h2>
+          <p>Ideas planteadas como evolución futura; no forman parte de una promesa de funcionalidades ya disponibles.</p>
+        </div>
+        <div class="future-grid">
+          <article class="future reveal"><span>🗝️</span><strong>Experiencia multiusuario</strong><p>Cuentas, acceso y persistencia ampliada.</p></article>
+          <article class="future reveal"><span>🤝</span><strong>Mishi Especialistas</strong><p>Explorar una conexión responsable con profesionales.</p></article>
+          <article class="future reveal"><span>🎙️</span><strong>Interacción por voz</strong><p>Investigar entrada de voz y nuevas formas de interacción.</p></article>
+          <article class="future reveal"><span>📱</span><strong>Portabilidad y evaluación</strong><p>Explorar Android y estudios futuros con instrumentos adecuados.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="limites">
+      <div class="wrap">
+        <div class="caution reveal">
+          <div class="symbol">🛡️</div>
+          <div><h3>Un proyecto de bienestar, no un tratamiento</h3><p>Mishi fue concebido como una herramienta de acompañamiento y acercamiento a recursos de autocuidado. No diagnostica, no reemplaza a profesionales y no debe considerarse un servicio de emergencia. La vitrina presenta el alcance de un prototipo académico y no afirma eficacia clínica demostrada.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>Hecho con 💜 por <a href="https://www.youtube.com/@KaledSML" target="_blank" rel="noopener noreferrer">Kaled San Martin</a> · Proyecto de titulación, Universidad Bernardo O’Higgins.</p>
+      <a class="backtop" href="#inicio">Volver al inicio ↑</a>
     </div>
-  </div>
-</header>
+    <div class="wrap"><p class="small-note" style="margin-top:1rem">Aviso: esta vitrina documenta el proyecto. El código fuente y los binarios de Unity se mantienen en reserva. Los recursos y marcas de terceros pertenecen a sus respectivos titulares.</p></div>
+  </footer>
 
-<main>
-<section id="juego"><div class="wrap">
-  <div class="head">
-    <h2>Tres cosas que puedes hacer</h2>
-    <p>Mishi vive dentro de un mundo de fantasía. Esto es lo que encuentras en él.</p>
-  </div>
-  <div class="cards" id="cards"></div>
-</div></section>
-
-<section class="fact"><div class="wrap">
-  <div class="big">77,9 %</div>
-  <p>de las consultas estudiantiles en educación superior fueron por salud mental en 2022. En 2018 eran el 55,7 %.</p>
-  <small>Subsecretaría de Educación Superior, citada en la memoria de título.</small>
-</div></section>
-
-<section id="mas"><div class="wrap">
-  <div class="head">
-    <h2>Conoce más</h2>
-    <p>Mishi no es una terapia ni reemplaza a un profesional de salud mental: es un primer paso para pedir ayuda.</p>
-  </div>
-  <div class="links">
-    <a class="pri" href="https://github.com/KaledSML/Mishi-HealthTech-App">Documentación completa<span>Arquitectura, metodología y estándares</span></a>
-    <a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_">Playlist<span>Los 10 videos del proyecto</span></a>
-    <a href="https://www.canva.com/design/DAF6U6vitYE/0zKyGm7OvkUnQcgQr-ZSEQ/view">Memoria de tesis<span>Documento completo</span></a>
-    <a href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?node-id=0%3A1">Prototipo en Figma<span>Diseño de la experiencia</span></a>
-  </div>
-</div></section>
-</main>
-
-<footer><div class="wrap">
-  <p>Finalista del concurso <i>60 secondes pour convaincre</i> (AUF) · 2º lugar en la defensa de póster, Semana de la Ingeniería UBO 2022 · UBO Inicia 2022.</p>
-  <p>Memoria para optar al título de Ingeniero en Informática, Universidad Bernardo O’Higgins. Código en reserva por propiedad intelectual.</p>
-  <p>Hecho con 💜 por <a href="https://www.youtube.com/@KaledSML">Kaled San Martin</a>.</p>
-</div></footer>
-
-<script>
-const FEATURES=[
- ["pIdHgLZ9bTw","Conversa","Mishi escucha, te hace reír y te recomienda música. Funciona con IA de OpenAI."],
- ["1hSqgYML_ww","Cumple misiones","Retos de autocuidado contados como aventura, pensados para que salgas a hacer cosas reales."],
- ["qPd3npeGM_A","Respira","Un botón de pánico te lleva a una guía de primeros auxilios psicológicos. Mishi sabe dónde está."]
-];
-const cards=document.getElementById("cards");
-FEATURES.forEach(([id,title,text])=>{
-  const c=document.createElement("article");c.className="card";
-  const b=document.createElement("button");
-  b.className="thumb";b.type="button";b.setAttribute("aria-label","Reproducir video: "+title);
-  b.style.backgroundImage="url(https://img.youtube.com/vi/"+id+"/hqdefault.jpg)";
-  b.addEventListener("click",()=>{
-    const f=document.createElement("iframe");
-    f.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";
-    f.title=title;f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;
-    b.replaceWith(f);
-  });
-  const t=document.createElement("div");t.className="t";
-  const h=document.createElement("h3");h.textContent=title;
-  const p=document.createElement("p");p.textContent=text;
-  t.append(h,p);c.append(b,t);cards.append(c);
-});
-</script>
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
