@@ -1,4 +1,4 @@
- <div align="center">
+<div align="center">
 
 <img src="mishi-banner.png" alt="Mishi — un pequeño mundo para cuidar de ti" width="100%">
 
@@ -16,19 +16,14 @@ Un videojuego 3D que integra **inteligencia artificial, misiones de autocuidado 
 <a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"><img src="https://img.shields.io/badge/🎮_Ver_demos-D98BA7?style=for-the-badge" alt="Ver demostraciones"></a>
 <a href="https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link"><img src="https://img.shields.io/badge/📜_Ver_póster-78A99A?style=for-the-badge" alt="Ver póster"></a>
 
-<br>
+<br><br>
 
-<img src="https://img.shields.io/badge/Proyecto-Académico-C9B6E4?style=flat-square" alt="Proyecto académico">
-<img src="https://img.shields.io/badge/Desarrollo-Unity_3D-9CC8D8?style=flat-square" alt="Unity 3D">
-<img src="https://img.shields.io/badge/Enfoque-Bienestar-F2C6D4?style=flat-square" alt="Bienestar estudiantil">
-
-<img src="https://img.shields.io/badge/Unity-222222?style=for-the-badge&logo=unity&logoColor=white" alt="Unity">
-<img src="https://img.shields.io/badge/C%23-68217A?style=for-the-badge&logo=csharp&logoColor=white" alt="C sharp">
-<img src="https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI API">
-<img src="https://img.shields.io/badge/VRoid_Studio-8E7CC3?style=for-the-badge" alt="VRoid Studio">
-<img src="https://img.shields.io/badge/UniVRM-8FB9A8?style=for-the-badge" alt="UniVRM">
-<img src="https://img.shields.io/badge/Figma-E8A1B0?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
-
+<img src="https://img.shields.io/badge/Unity-222222?style=flat-square&logo=unity&logoColor=white" alt="Unity">
+<img src="https://img.shields.io/badge/C%23-68217A?style=flat-square&logo=csharp&logoColor=white" alt="C#">
+<img src="https://img.shields.io/badge/OpenAI_API-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI API">
+<img src="https://img.shields.io/badge/VRoid_Studio-8E7CC3?style=flat-square" alt="VRoid Studio">
+<img src="https://img.shields.io/badge/UniVRM-8FB9A8?style=flat-square" alt="UniVRM">
+<img src="https://img.shields.io/badge/Figma-E8A1B0?style=flat-square&logo=figma&logoColor=white" alt="Figma">
 
 </div>
 
@@ -67,24 +62,15 @@ Un recurso audiovisual relacionado con los primeros auxilios psicológicos.
 </tr>
 </table>
 
-
 ## ✨ Explora el Mishi-verso
 
-<div align="center">
-
-<a href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1"><img src="https://img.shields.io/badge/🎨_Figma-Diseño-D98BA7?style=for-the-badge&logo=figma&logoColor=white" alt="Diseño en Figma"></a>
-
-<a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"><img src="https://img.shields.io/badge/▶️_YouTube-Demostraciones-CB5555?style=for-the-badge&logo=youtube&logoColor=white" alt="Demostraciones"></a>
-
-<a href="https://www.youtube.com/watch?v=8aOUeTWVn2Y"><img src="https://img.shields.io/badge/🏅_AUF-60_secondes_pour_convaincre-E4B96A?style=for-the-badge" alt="AUF 2022"></a>
-
-<a href="https://canva.link/bj6jjqdlc8j60y9"><img src="https://img.shields.io/badge/📖_Memoria-Explorar_en_Canva-78A99A?style=for-the-badge" alt="Memoria de título en Canva"></a>
-
-</div>
+- 🎨 [Diseño en Figma](https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1)
+- 🏅 [AUF 2022 · *60 secondes pour convaincre*](https://www.youtube.com/watch?v=8aOUeTWVn2Y) (video en francés)
+- 📖 [Memoria de título en Canva](https://canva.link/bj6jjqdlc8j60y9)
 
 ## 🎓 Sobre el proyecto
 
-**Proyecto de titulación de Ingeniería en Informática**  
+**Proyecto de titulación de Ingeniería en Informática**
 Universidad Bernardo O’Higgins (UBO).
 
 Mishi es un prototipo académico orientado al bienestar estudiantil. Su desarrollo explora cómo una experiencia interactiva puede integrar inteligencia artificial, actividades de autocuidado y recursos informativos en un entorno virtual.
