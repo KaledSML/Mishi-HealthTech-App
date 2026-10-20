@@ -70,6 +70,26 @@
     .nav-links a { font-size: .9rem; color: var(--muted); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: white; }
     .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 12px; color: white; background: var(--panel); padding: .5rem .75rem; }
+
+    .banner-showcase { padding: 1.2rem 0 0; }
+    .banner-frame {
+      position: relative; overflow: hidden; border-radius: 28px;
+      border: 1px solid rgba(217,204,255,.32);
+      box-shadow: 0 25px 90px rgba(0,0,0,.32), 0 0 55px rgba(155,123,255,.12);
+      background: #211638;
+    }
+    .banner-frame img { display:block; width:100%; height:auto; }
+    .banner-caption {
+      display:flex; justify-content:space-between; align-items:center; gap:1rem;
+      padding:.75rem 1rem; color:var(--muted); font-size:.82rem;
+      border-top:1px solid var(--line); background:rgba(23,17,38,.72);
+    }
+    .banner-caption strong { color:var(--lavender); }
+    @media (max-width: 640px) {
+      .banner-frame { border-radius:18px; }
+      .banner-caption { align-items:flex-start; flex-direction:column; gap:.15rem; }
+    }
+
     .hero { position: relative; padding: 88px 0 70px; min-height: 620px; display: grid; align-items: center; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2rem; }
     .eyebrow { display: inline-flex; gap: .55rem; align-items: center; color: var(--mint); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; font-weight: 800; }
@@ -230,6 +250,18 @@
   </div>
 
   <main id="contenido">
+
+    <section class="banner-showcase" aria-label="Banner de presentación de Mishi">
+      <div class="wrap">
+        <figure class="banner-frame">
+          <img src="mishi-banner.png" alt="Banner fantástico de Mishi: Alicia explora un jardín mágico junto a una pequeña criatura amarilla con orejas de gato y una hojita en la cabeza.">
+          <figcaption class="banner-caption">
+            <span><strong>Mishi</strong> · Un pequeño mundo para cuidar de ti.</span>
+            <span>Videojuego 3D · IA · Bienestar estudiantil</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
     <header class="hero" id="inicio">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
@@ -242,7 +274,7 @@
           </div>
           <p class="small-note" style="margin-top:1rem">Una experiencia documentada desde la idea hasta el MVP local.</p>
         </div>
-        <div class="hero-art" aria-label="Ilustración decorativa de un gato mágico">
+        <div class="hero-art" aria-label="Ilustración decorativa de Mishi, una criatura slime con orejas de gato">
           <div class="moon"></div><div class="orbit"></div>
           <div class="cat-wrap" aria-hidden="true">
             <div class="cat">
