@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="mishi-banner.png" alt="Mishi: un pequeño mundo para cuidar de ti" width="100%">
+<img src="Mishi.png" alt="Mishi: un pequeño mundo para cuidar de ti" width="100%">
 
 # ✨ Mishi
 
