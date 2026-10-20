@@ -4,123 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#171128">
-<meta name="description" content="Mishi: un pequeño mundo para cuidar de ti. Videojuego 3D de bienestar estudiantil con inteligencia artificial, misiones de autocuidado y recursos de apoyo.">
-<title>Mishi ✦ Un pequeño mundo para cuidar de ti</title>
+<meta name="description" content="Mishi: un pequeño mundo para cuidar de ti. Una experiencia 3D con IA, misiones de autocuidado y recursos de apoyo para estudiantes.">
+<title>Mishi — Un pequeño mundo para cuidar de ti</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
-:root{--night:#171128;--night2:#211638;--panel:#261c40;--panel2:#30234c;--lav:#c7a8ff;--pink:#f4a8e7;--mint:#baf2d6;--gold:#ffe2a1;--white:#fff9ff;--muted:#c9bedb;--line:rgba(230,214,255,.16);--max:1120px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--night);color:var(--white);font-family:'DM Sans',sans-serif;line-height:1.65;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 10% 5%,rgba(124,82,191,.2),transparent 35%),radial-gradient(ellipse at 90% 35%,rgba(80,70,150,.17),transparent 30%),radial-gradient(ellipse at 50% 100%,rgba(145,78,154,.12),transparent 35%)}
-a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
-.nav{position:sticky;top:0;z-index:10;background:rgba(23,17,40,.84);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;font-family:Nunito,sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:.02em}.brand-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:13px;background:linear-gradient(135deg,#ffe4a5,#d4b4ff);color:#35244b;box-shadow:0 4px 20px #d7b7ff35}
-.navlinks{display:flex;gap:23px;align-items:center;color:var(--muted);font-size:.9rem}.navlinks a:hover{color:var(--white)}.nav-cta{padding:9px 15px;border-radius:999px;background:var(--lav);color:#251737;font-weight:800}
-.hero{padding:42px 0 56px}.banner{position:relative;overflow:hidden;border:1px solid rgba(215,193,255,.28);border-radius:28px;background:#211638;box-shadow:0 30px 90px #05020e66,0 0 60px #b89bff0e}
-.banner img{display:block;width:100%;height:auto}.banner-note{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:#1b142be8;color:var(--muted);font-size:.84rem}.banner-note b{color:var(--lav)}
-.hero-intro{max-width:740px;margin:34px auto 0;text-align:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--mint);font-size:.77rem;letter-spacing:.17em;text-transform:uppercase;font-weight:800}.eyebrow:before,.eyebrow:after{content:"✦";color:var(--pink)}h1,h2,h3{font-family:Nunito,sans-serif;line-height:1.14;margin:0;font-weight:900;letter-spacing:-.025em}h1{font-size:clamp(2.2rem,5vw,4rem);margin:13px 0 16px}h1 span{background:linear-gradient(100deg,var(--gold),var(--pink),var(--lav));background-clip:text;color:transparent}.hero-intro p{font-size:1.08rem;color:var(--muted);max-width:650px;margin:0 auto}
-.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:25px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 19px;border-radius:999px;font-weight:800;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-3px);box-shadow:0 9px 28px #0003}.btn-primary{background:linear-gradient(120deg,#ffe2a1,#f3b5e8);color:#2c1d3d;border:0}.btn-quiet{background:#ffffff08}
-section.content{padding:70px 0}.section-head{max-width:720px;margin:0 auto 30px;text-align:center}.section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:12px 0}.section-head p{margin:0;color:var(--muted)}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{position:relative;padding:25px;border-radius:22px;background:linear-gradient(145deg,#2a2044dd,#21182fee);border:1px solid var(--line);overflow:hidden;transition:transform .25s,border-color .25s}.feature:hover{transform:translateY(-5px);border-color:#c8aaff70}.feature:after{content:"";position:absolute;width:110px;height:110px;right:-50px;top:-50px;border-radius:50%;background:var(--glow,#c6a7ff);opacity:.1;filter:blur(3px)}.feature-icon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;font-size:1.6rem;background:#ffffff0d;border:1px solid #ffffff12;margin-bottom:18px}.feature:nth-child(2) .feature-icon{background:#c1f4d51a}.feature:nth-child(3) .feature-icon{background:#f3a9e71a}.feature h3{font-size:1.28rem;margin-bottom:9px}.feature p{color:var(--muted);margin:0;font-size:.95rem}.tag{display:inline-block;margin-top:18px;font-size:.76rem;color:var(--lav);font-weight:800;letter-spacing:.04em}
-.world{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center}.world-copy{padding:10px 0}.world-copy h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0}.world-copy p{color:var(--muted)}.world-points{display:grid;gap:12px;margin-top:22px}.world-point{display:flex;gap:12px;align-items:flex-start}.world-point i{font-style:normal;display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:11px;background:#c6a8ff19;color:var(--lav)}.world-point strong{display:block}.world-point span{display:block;color:var(--muted);font-size:.9rem}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}.shot{overflow:hidden;border-radius:22px;background:var(--panel);border:1px solid var(--line);margin:0}.shot:first-child{grid-column:span 2}.shot img{display:block;width:100%;height:100%;max-height:370px;object-fit:cover;transition:transform .5s}.shot:first-child img{max-height:450px}.shot:hover img{transform:scale(1.035)}.shot figcaption{padding:12px 15px;color:var(--muted);font-size:.84rem}
-.project-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--line)}.project-cell{padding:22px;background:#21182ff0;text-align:center}.project-cell .big{font-size:1.5rem}.project-cell strong{display:block;margin-top:5px}.project-cell span{display:block;color:var(--muted);font-size:.82rem}
-.details{display:grid;grid-template-columns:1fr 1fr;gap:14px}.detail{border:1px solid var(--line);border-radius:18px;background:#ffffff05;overflow:hidden}.detail summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:800;display:flex;justify-content:space-between;gap:15px;align-items:center}.detail summary::-webkit-details-marker{display:none}.detail summary:after{content:"＋";color:var(--lav);font-size:1.2rem}.detail[open] summary:after{content:"−"}.detail-content{padding:0 20px 20px;color:var(--muted);font-size:.94rem}.detail-content p{margin:0 0 8px}.detail-content ul{padding-left:20px;margin:8px 0}
-.note{display:flex;gap:16px;align-items:flex-start;padding:23px;border-radius:20px;border:1px solid #ffe2a13d;background:linear-gradient(110deg,#ffe2a10b,#f2a9e708);margin-top:24px}.note-icon{font-size:1.6rem}.note p{margin:0;color:var(--muted);font-size:.93rem}.note strong{color:var(--gold)}
-.closing{padding:58px 25px;text-align:center;border-radius:28px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,#bca0ff20,transparent 65%),#21182f}.closing h2{font-size:clamp(2rem,4vw,3rem);margin:12px 0}.closing p{color:var(--muted);margin:0 auto;max-width:570px}.footer{padding:28px 0 36px;color:#a99dbd;font-size:.83rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--line);padding-top:22px}.footer strong{color:var(--lav)}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:800px){.navlinks{gap:13px}.navlinks a:not(.nav-cta){display:none}.features{grid-template-columns:1fr}.world{grid-template-columns:1fr}.world-copy{order:0}.gallery{order:1}.project-strip{grid-template-columns:1fr 1fr}.details{grid-template-columns:1fr}.hero{padding-top:24px}.banner{border-radius:20px}}
-@media(max-width:520px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav-inner{min-height:62px}.brand{font-size:1.12rem}.nav-cta{font-size:.82rem;padding:8px 12px}.banner-note{align-items:flex-start;flex-direction:column;gap:2px;padding:10px 13px}.hero-intro p{font-size:1rem}.actions .btn{width:100%}.project-cell{padding:17px 10px}.footer-inner{align-items:flex-start;flex-direction:column}.shot img,.shot:first-child img{max-height:260px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation:none!important;transition:none!important}}
+:root{--bg:#171126;--bg2:#211633;--panel:#281d40;--panel2:#33254e;--lav:#c7a8ff;--pink:#f2a9dd;--mint:#bdf0d7;--gold:#ffe2a3;--cream:#fff8f0;--muted:#c9bfd8;--line:#ffffff20;--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(ellipse at 10% 0%,#7954b52b,transparent 35%),radial-gradient(ellipse at 90% 35%,#5d65b21b,transparent 32%),radial-gradient(ellipse at 50% 100%,#b45b9b17,transparent 40%)}
+a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+.starfield{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff0bd;opacity:.65;animation:twinkle 3.2s ease-in-out infinite alternate}.star:nth-child(2n){background:#d8bdff;animation-delay:-1.7s}.star:nth-child(3n){width:2px;height:2px;animation-delay:-.7s}@keyframes twinkle{from{opacity:.18;transform:scale(.75)}to{opacity:.8;transform:scale(1.4)}}
+.nav{position:sticky;top:0;z-index:20;background:#171126d9;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;font:900 1.28rem Nunito,sans-serif;letter-spacing:.02em}.brand-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,var(--gold),var(--pink),var(--lav));color:#32203f;box-shadow:0 0 25px #c6a8ff35}.navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.9rem}.navlinks a:hover{color:white}.nav-cta{padding:9px 15px;border-radius:999px;background:var(--lav);color:#271938!important;font-weight:800}
+.hero{padding:58px 0 74px;position:relative}.hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:38px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--mint);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.eyebrow:before{content:"✦";color:var(--pink)}h1,h2,h3{font-family:Nunito,sans-serif;line-height:1.13;letter-spacing:-.035em;margin:0;font-weight:900}h1{font-size:clamp(2.7rem,5vw,5.1rem);margin:16px 0 19px}h1 em{font-style:normal;background:linear-gradient(95deg,var(--gold),var(--pink),var(--lav));background-clip:text;color:transparent}.hero-copy>p{font-size:1.08rem;max-width:540px;color:var(--muted);margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 19px;border-radius:999px;font-weight:800;transition:transform .22s,box-shadow .22s,border-color .22s;border:1px solid var(--line)}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #0004}.btn-primary{background:linear-gradient(110deg,var(--gold),var(--pink));color:#2a1a39;border:0}.btn-secondary{background:#ffffff07}.hero-meta{display:flex;align-items:center;gap:12px;margin-top:27px;color:#bdb1d0;font-size:.83rem}.tiny-stars{color:var(--gold);letter-spacing:.12em}
+.art-stage{position:relative;min-height:480px;display:grid;place-items:center;isolation:isolate}.art-glow{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#a882ed2c,transparent 68%);filter:blur(8px);z-index:-1}.orbit{position:absolute;width:87%;aspect-ratio:1;border:1px solid #d4bdff24;border-radius:50%;animation:spin 38s linear infinite}.orbit:before,.orbit:after{content:"✦";position:absolute;color:var(--gold);font-size:1.15rem}.orbit:before{top:8%;left:17%}.orbit:after{bottom:13%;right:10%;color:var(--pink)}@keyframes spin{to{transform:rotate(360deg)}}
+.game-art{position:relative;width:min(100%,560px);height:420px;border-radius:36px;overflow:hidden;border:1px solid #e0cfff38;box-shadow:0 35px 80px #07030d70;background:#38254f}.game-art img{width:100%;height:100%;object-fit:cover;object-position:62% center;display:block;filter:saturate(.9)}.game-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#181127bd 0%,transparent 48%),linear-gradient(90deg,#21163320,transparent 65%);pointer-events:none}.art-caption{position:absolute;z-index:1;left:22px;right:22px;bottom:18px;display:flex;justify-content:space-between;align-items:end;gap:12px}.art-caption strong{font:900 1.25rem Nunito,sans-serif;display:block}.art-caption span{font-size:.82rem;color:#e0d6ef}.floating-mishi{position:absolute;width:145px;height:145px;right:-8px;bottom:16px;z-index:3;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 16px 24px #09051170)}.floating-mishi img{width:100%;height:100%;object-fit:cover;object-position:center;border:3px solid #f6e6c9;border-radius:42% 42% 48% 48%;box-shadow:0 0 0 7px #c5a8ff20}.bubble{position:absolute;right:112px;bottom:140px;z-index:4;background:#fff8ee;color:#34213d;border-radius:17px 17px 4px 17px;padding:9px 13px;font-size:.82rem;font-weight:800;box-shadow:0 8px 30px #0003;animation:bob 4s ease-in-out infinite reverse}.bubble:after{content:"";position:absolute;right:-6px;bottom:1px;border-width:7px 0 0 7px;border-style:solid;border-color:transparent transparent transparent #fff8ee}@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.section{padding:80px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 36px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);margin:12px 0 14px}.section-head p{color:var(--muted);margin:0}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature{padding:27px 25px 25px;position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#302247d9,#221833f5);border:1px solid var(--line);transition:transform .25s,border-color .25s,background .25s}.feature:hover{transform:translateY(-6px);border-color:#c7a8ff6b;background:linear-gradient(145deg,#392751,#261b3b)}.feature-icon{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;font-size:1.7rem;margin-bottom:20px;background:#c7a8ff18;border:1px solid #c7a8ff20}.feature:nth-child(2) .feature-icon{background:#bdf0d71b;border-color:#bdf0d72b}.feature:nth-child(3) .feature-icon{background:#f2a9dd1b;border-color:#f2a9dd2b}.feature h3{font-size:1.32rem;margin-bottom:9px}.feature p{color:var(--muted);font-size:.94rem;margin:0}.feature-foot{display:flex;align-items:center;gap:8px;color:var(--lav);font-size:.78rem;font-weight:800;margin-top:20px}
+.quote-band{margin-top:25px;padding:19px 22px;border:1px solid #bdf0d72b;border-radius:18px;background:linear-gradient(100deg,#bdf0d70b,#c7a8ff0b);display:flex;gap:13px;align-items:center;color:var(--muted)}.quote-band b{color:var(--mint)}
+.world-layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:44px;align-items:center}.world-copy h2{font-size:clamp(2.2rem,4vw,3.6rem);margin:14px 0 18px}.world-copy>p{color:var(--muted)}.checklist{display:grid;gap:15px;margin-top:24px}.check{display:flex;align-items:flex-start;gap:12px}.check-symbol{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:12px;background:#c7a8ff17;color:var(--lav)}.check strong{display:block}.check span{display:block;color:var(--muted);font-size:.9rem}.screens{display:grid;grid-template-columns:1fr 1fr;gap:13px}.screen{margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--panel)}.screen:first-child{grid-column:span 2}.screen img{width:100%;height:100%;max-height:250px;display:block;object-fit:cover;transition:transform .5s}.screen:first-child img{max-height:330px}.screen:hover img{transform:scale(1.035)}.screen figcaption{padding:11px 14px;font-size:.81rem;color:var(--muted)}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:var(--line)}.tech{background:#241a36;padding:23px 15px;text-align:center}.tech-icon{font-size:1.5rem}.tech strong{display:block;margin:7px 0 2px}.tech span{color:var(--muted);font-size:.79rem}
+.accordions{display:grid;grid-template-columns:1fr 1fr;gap:13px}.accordion{border-radius:18px;border:1px solid var(--line);background:#ffffff05;overflow:hidden}.accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 20px;font-weight:800}.accordion summary::-webkit-details-marker{display:none}.accordion summary:after{content:"＋";color:var(--lav);font-size:1.2rem}.accordion[open] summary:after{content:"−"}.accordion-body{padding:0 20px 20px;color:var(--muted);font-size:.93rem}.accordion-body p{margin:0}.safety{display:flex;gap:15px;align-items:flex-start;margin-top:24px;padding:22px;border:1px solid #ffe2a333;border-radius:20px;background:linear-gradient(110deg,#ffe2a10b,#f2a9dd08)}.safety-icon{font-size:1.55rem}.safety p{margin:0;color:var(--muted);font-size:.92rem}.safety strong{color:var(--gold)}
+.final-cta{position:relative;text-align:center;padding:66px 28px;border-radius:30px;overflow:hidden;border:1px solid #c7a8ff32;background:radial-gradient(ellipse at 50% 0%,#b999ff22,transparent 65%),linear-gradient(145deg,#281c3e,#211630)}.final-cta:before{content:"✦";position:absolute;left:9%;top:16%;color:var(--gold);font-size:1.5rem}.final-cta:after{content:"✧";position:absolute;right:11%;bottom:16%;color:var(--pink);font-size:2rem}.final-cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:13px 0}.final-cta p{max-width:600px;margin:0 auto;color:var(--muted)}.footer{padding:29px 0 38px;color:#a99dbb;font-size:.82rem}.footer-inner{border-top:1px solid var(--line);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.footer strong{color:var(--lav)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:850px){.hero-grid,.world-layout{grid-template-columns:1fr}.hero-grid{gap:12px}.hero-copy{text-align:center}.hero-copy>p{margin:auto}.hero-actions,.hero-meta{justify-content:center}.art-stage{min-height:400px}.game-art{height:370px}.world-copy{max-width:680px;margin:auto}.feature-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:1fr 1fr}.navlinks{gap:13px}.navlinks a:not(.nav-cta){display:none}}
+@media(max-width:560px){.wrap{width:calc(100% - 26px)}.nav-inner{min-height:63px}.brand{font-size:1.12rem}.nav-cta{font-size:.81rem;padding:8px 12px}.hero{padding:32px 0 50px}.hero-grid{gap:0}h1{font-size:clamp(2.45rem,12vw,3.4rem)}.hero-copy>p{font-size:1rem}.hero-actions .btn{width:100%}.hero-meta{font-size:.76rem}.art-stage{min-height:320px;margin-top:12px}.orbit{width:90%}.game-art{width:95%;height:300px;border-radius:24px}.floating-mishi{width:105px;height:105px;right:-1px;bottom:4px}.bubble{right:73px;bottom:105px;font-size:.72rem;padding:7px 10px}.art-caption{left:14px;right:14px;bottom:12px}.section{padding:60px 0}.screens{gap:9px}.screen img,.screen:first-child img{max-height:220px}.tech{padding:18px 8px}.accordions{grid-template-columns:1fr}.footer-inner{align-items:flex-start;flex-direction:column}.quote-band{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.star,.orbit,.floating-mishi,.bubble{animation:none!important}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body>
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#inicio" aria-label="Mishi, inicio"><span class="brand-mark">✿</span> mishi<span style="color:var(--lav)">.</span></a>
-    <nav class="navlinks" aria-label="Navegación principal">
-      <a href="#experiencia">La experiencia</a><a href="#mundo">El mundo</a><a href="#proyecto">El proyecto</a>
-      <a class="nav-cta" href="#explorar">Explorar Mishi ↗</a>
-    </nav>
-  </div>
-</header>
+<div class="starfield" aria-hidden="true">
+<span class="star" style="left:8%;top:17%"></span><span class="star" style="left:23%;top:33%"></span><span class="star" style="left:72%;top:13%"></span><span class="star" style="left:89%;top:28%"></span><span class="star" style="left:62%;top:54%"></span><span class="star" style="left:14%;top:73%"></span><span class="star" style="left:83%;top:82%"></span><span class="star" style="left:42%;top:91%"></span><span class="star" style="left:54%;top:22%"></span><span class="star" style="left:34%;top:63%"></span><span class="star" style="left:94%;top:59%"></span><span class="star" style="left:5%;top:47%"></span>
+</div>
+<header class="nav"><div class="wrap nav-inner">
+<a class="brand" href="#inicio"><span class="brand-icon">✿</span> mishi<span style="color:var(--lav)">.</span></a>
+<nav class="navlinks" aria-label="Navegación principal"><a href="#experiencia">La experiencia</a><a href="#mundo">Mishi y Alicia</a><a href="#proyecto">El proyecto</a><a class="nav-cta" href="#explorar">Entrar al Mishi-verso ↗</a></nav>
+</div></header>
 <main id="inicio">
-  <div class="hero">
-    <div class="wrap">
-      <figure class="banner">
-        <img src="mishi-banner.png" alt="Alicia explora un jardín mágico junto a Mishi, una criatura amarilla con orejas de gato y una hojita en la cabeza.">
-        <figcaption class="banner-note"><span><b>✦ Mishi</b> · Un pequeño mundo para cuidar de ti.</span><span>Videojuego 3D · IA · Bienestar estudiantil</span></figcaption>
-      </figure>
-      <div class="hero-intro">
-        <span class="eyebrow">Una aventura para el bienestar</span>
-        <h1>Un lugar mágico para <span>hacer una pausa.</span></h1>
-        <p>Acompaña a Alicia y a Mishi en una experiencia que une exploración, inteligencia artificial y pequeñas misiones de autocuidado para estudiantes de educación superior.</p>
-        <div class="actions"><a class="btn btn-primary" href="#experiencia">Descubrir el proyecto <span>✦</span></a><a class="btn btn-quiet" href="#galeria">Ver el mundo de Mishi ↓</a></div>
-      </div>
-    </div>
-  </div>
-  <section class="content" id="experiencia">
-    <div class="wrap">
-      <div class="section-head reveal"><span class="eyebrow">Tres formas de acompañarte</span><h2>Pequeños pasos, un mundo de posibilidades.</h2><p>Mishi combina recursos digitales pensados para acercar el autocuidado a la vida cotidiana.</p></div>
-      <div class="features">
-        <article class="feature reveal" style="--glow:#bda0ff"><div class="feature-icon">💬</div><h3>Habla con Mishi</h3><p>Un personaje con IA que ofrece una experiencia conversacional dentro del videojuego.</p><span class="tag">✦ Conversación con IA</span></article>
-        <article class="feature reveal" style="--glow:#baf2d6"><div class="feature-icon">🌱</div><h3>Explora y cumple misiones</h3><p>Actividades gamificadas que invitan a practicar hábitos positivos y acciones de autocuidado.</p><span class="tag">✦ Exploración y gamificación</span></article>
-        <article class="feature reveal" style="--glow:#f4a8e7"><div class="feature-icon">💗</div><h3>Encuentra un recurso de apoyo</h3><p>Un acceso rápido a un video sobre primeros auxilios psicológicos para momentos difíciles.</p><span class="tag">✦ Recurso audiovisual</span></article>
-      </div>
-    </div>
-  </section>
-  <section class="content" id="mundo">
-    <div class="wrap world">
-      <div class="world-copy reveal">
-        <span class="eyebrow">Conoce a los protagonistas</span><h2>Alicia explora.<br><span style="color:var(--lav)">Mishi la acompaña.</span></h2>
-        <p>Mishi es una pequeña criatura slime con orejitas de gato y una hojita en la cabeza. Sigue a Alicia mientras recorre un entorno fantástico creado en 3D.</p>
-        <div class="world-points">
-          <div class="world-point"><i>✦</i><div><strong>Un mundo que invita a explorar</strong><span>Entornos naturales, flores y rincones por descubrir.</span></div></div>
-          <div class="world-point"><i>♡</i><div><strong>Una compañía cercana</strong><span>Un personaje adorable como guía dentro de la experiencia.</span></div></div>
-          <div class="world-point"><i>☾</i><div><strong>Bienestar como propósito</strong><span>La tecnología y el juego al servicio de una experiencia de autocuidado.</span></div></div>
-        </div>
-      </div>
-      <div class="gallery" id="galeria">
-        <figure class="shot reveal"><img src="mishi-mundo.png" alt="Captura del videojuego en tercera persona: Alicia explora un jardín verde con flores y estructuras de piedra."><figcaption>El mundo de Mishi · Exploración en tercera persona</figcaption></figure>
-        <figure class="shot reveal"><img src="mishi-personaje.png" alt="Mishi, criatura amarilla con ojos grandes y una hojita verde sobre la cabeza."><figcaption>Conoce a Mishi 💛</figcaption></figure>
-        <figure class="shot reveal"><img src="mishi-unity.png" alt="Captura del desarrollo del personaje dentro del editor de Unity."><figcaption>Detrás de escena · Desarrollo en Unity</figcaption></figure>
-      </div>
-    </div>
-  </section>
-  <section class="content" id="proyecto">
-    <div class="wrap">
-      <div class="section-head reveal"><span class="eyebrow">Detrás de la magia</span><h2>Un proyecto académico con propósito.</h2><p>Una propuesta de ingeniería que explora cómo una experiencia interactiva puede acercar herramientas de bienestar a estudiantes de educación superior.</p></div>
-      <div class="project-strip reveal">
-        <div class="project-cell"><div class="big">🎮</div><strong>Unity 3D</strong><span>Entorno del videojuego</span></div>
-        <div class="project-cell"><div class="big">🤖</div><strong>OpenAI API</strong><span>Conversación con IA</span></div>
-        <div class="project-cell"><div class="big">🌿</div><strong>Gamificación</strong><span>Misiones de autocuidado</span></div>
-        <div class="project-cell"><div class="big">🎓</div><strong>Proyecto de título</strong><span>Ingeniería en Informática</span></div>
-      </div>
-      <div class="section-head reveal" style="margin-top:58px"><span class="eyebrow">Un poco más de detalle</span><h2>La magia también tiene estructura.</h2><p>Abre cada apartado si quieres conocer más sobre las ideas detrás de Mishi.</p></div>
-      <div class="details">
-        <details class="detail reveal"><summary>🧠 Enfoque de bienestar</summary><div class="detail-content"><p>La propuesta busca acercar prácticas de autocuidado mediante una experiencia digital amable y accesible. Las misiones toman inspiración de conceptos de bienestar y gamificación.</p></div></details>
-        <details class="detail reveal"><summary>💬 Inteligencia artificial</summary><div class="detail-content"><p>La integración de una API de IA permite una experiencia conversacional con un personaje dentro del videojuego. La conversación no constituye diagnóstico ni terapia.</p></div></details>
-        <details class="detail reveal"><summary>🛠️ Tecnologías</summary><div class="detail-content"><p><strong>Unity 3D, C#, OpenAI API, VRoid Studio, UniVRM y Figma.</strong> La selección de herramientas responde al desarrollo del entorno 3D, los personajes y la interacción.</p></div></details>
-        <details class="detail reveal"><summary>🌱 Próximos pasos</summary><div class="detail-content"><p>Entre las posibles líneas futuras están ampliar las misiones, mejorar la experiencia de usuario y evaluar la utilidad de la propuesta con participantes y orientación profesional.</p></div></details>
-      </div>
-      <div class="note reveal"><div class="note-icon">💜</div><p><strong>Una nota importante:</strong> Mishi es un prototipo académico orientado al bienestar estudiantil. No reemplaza la atención de profesionales de salud mental ni constituye una herramienta de diagnóstico o tratamiento. Ante una situación de riesgo, busca ayuda profesional o servicios de emergencia de tu localidad.</p></div>
-    </div>
-  </section>
-  <section class="content" id="explorar">
-    <div class="wrap">
-      <div class="closing reveal"><span class="eyebrow">El Mishi-verso te espera</span><h2>La aventura empieza<br>con un pequeño paso. ✨</h2><p>Conoce más sobre el proyecto, mira las demostraciones y descubre cómo se construyó este pequeño mundo.</p><div class="actions"><a class="btn btn-primary" href="URL_DE_TUS_VIDEOS">Ver demostraciones ↗</a><a class="btn btn-quiet" href="URL_DE_TU_TESIS">Leer sobre la tesis ↗</a></div></div>
-    </div>
-  </section>
+<section class="hero"><div class="wrap hero-grid">
+<div class="hero-copy reveal">
+<span class="eyebrow">Un mundo para hacer una pausa</span>
+<h1>Pequeños pasos.<br><em>Un poquito de magia.</em></h1>
+<p>Conoce a Mishi y acompaña a Alicia en una aventura 3D que reúne inteligencia artificial, misiones de autocuidado y recursos de apoyo para estudiantes.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#experiencia">Descubrir Mishi <span>✦</span></a><a class="btn btn-secondary" href="#mundo">Conocer su mundo ↓</a></div>
+<div class="hero-meta"><span class="tiny-stars">✦ ✦ ✦</span><span>Videojuego 3D · IA · Bienestar estudiantil</span></div>
+</div>
+<div class="art-stage reveal">
+<div class="art-glow"></div><div class="orbit"></div>
+<div class="game-art"><img src="mishi-mundo.png" alt="Alicia explora el jardín verde y mágico del videojuego."><div class="art-caption"><div><strong>Bienvenida al Mishi-verso</strong><span>Un espacio para explorar y cuidarte</span></div><span>☾ ✦</span></div></div>
+<div class="floating-mishi"><img src="mishi-personaje.png" alt="Mishi, una bolita slime amarilla con orejitas de gato y una hojita verde."></div><div class="bubble">¡Hola, soy Mishi! ✨</div>
+</div>
+</div></section>
+<section class="section" id="experiencia"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">Tres formas de acompañarte</span><h2>La aventura también puede cuidar de ti.</h2><p>Mishi combina una experiencia lúdica con herramientas digitales que invitan a detenerse, conversar y practicar el autocuidado.</p></div>
+<div class="feature-grid">
+<article class="feature reveal"><div class="feature-icon">💬</div><h3>Habla con Mishi</h3><p>Una experiencia conversacional con inteligencia artificial dentro del videojuego.</p><div class="feature-foot">✦ Conversación con IA</div></article>
+<article class="feature reveal"><div class="feature-icon">🌱</div><h3>Haz pequeñas misiones</h3><p>Actividades gamificadas que invitan a practicar hábitos positivos y acciones de autocuidado.</p><div class="feature-foot">✦ Explora a tu ritmo</div></article>
+<article class="feature reveal"><div class="feature-icon">💗</div><h3>Encuentra apoyo</h3><p>Un acceso rápido a un recurso audiovisual sobre primeros auxilios psicológicos.</p><div class="feature-foot">✦ Un recurso para momentos difíciles</div></article>
+</div>
+<div class="quote-band reveal"><span style="font-size:1.4rem">✧</span><span><b>Sin prisa, a tu ritmo.</b> Mishi propone una forma cercana de explorar el bienestar desde una experiencia interactiva.</span></div>
+</div></section>
+<section class="section" id="mundo"><div class="wrap world-layout">
+<div class="world-copy reveal"><span class="eyebrow">Dos protagonistas</span><h2>Alicia explora.<br><span style="color:var(--lav)">Mishi la acompaña.</span></h2><p>Mishi es una pequeña criatura slime con orejitas de gato y una hojita en la cabeza. Sigue a Alicia mientras recorre un entorno fantástico creado en 3D.</p>
+<div class="checklist"><div class="check"><div class="check-symbol">✦</div><div><strong>Un mundo por descubrir</strong><span>Entornos naturales, flores y rincones que invitan a explorar.</span></div></div><div class="check"><div class="check-symbol">♡</div><div><strong>Una compañía adorable</strong><span>Una pequeña presencia que acompaña a Alicia en el camino.</span></div></div><div class="check"><div class="check-symbol">☾</div><div><strong>Bienestar como propósito</strong><span>Una propuesta académica que explora el juego como puerta de entrada al autocuidado.</span></div></div></div>
+</div>
+<div class="screens" id="galeria">
+<figure class="screen reveal"><img src="mishi-mundo.png" alt="Captura real del videojuego con Alicia en un jardín de flores y estructuras de piedra."><figcaption>Explora el mundo · Vista en tercera persona</figcaption></figure>
+<figure class="screen reveal"><img src="mishi-personaje.png" alt="Mishi, una criatura amarilla de aspecto slime con orejas y una hojita."><figcaption>Tu compañero de aventura 💛</figcaption></figure>
+<figure class="screen reveal"><img src="mishi-unity.png" alt="Vista del personaje en el editor de Unity durante el desarrollo."><figcaption>Detrás de escena · Unity</figcaption></figure>
+</div>
+</div></section>
+<section class="section" id="proyecto"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">Detrás de la magia</span><h2>Un proyecto de informática con propósito.</h2><p>Una propuesta de titulación que explora el diseño de una experiencia interactiva orientada al bienestar de estudiantes de educación superior.</p></div>
+<div class="tech-grid reveal"><div class="tech"><div class="tech-icon">🎮</div><strong>Unity 3D</strong><span>Entorno del videojuego</span></div><div class="tech"><div class="tech-icon">🤖</div><strong>OpenAI API</strong><span>Conversación con IA</span></div><div class="tech"><div class="tech-icon">🌿</div><strong>Gamificación</strong><span>Misiones de autocuidado</span></div><div class="tech"><div class="tech-icon">🎓</div><strong>Proyecto de título</strong><span>Ingeniería en Informática</span></div></div>
+<div class="section-head reveal" style="margin-top:58px;margin-bottom:27px"><span class="eyebrow">Un poquito más de detalle</span><h2>La magia tiene su lado técnico.</h2><p>Abre los apartados que quieras explorar; la información extra no ocupa toda la página de golpe.</p></div>
+<div class="accordions">
+<details class="accordion reveal"><summary>🧠 Enfoque de bienestar</summary><div class="accordion-body"><p>La propuesta acerca prácticas de autocuidado mediante una experiencia digital amable. Las misiones se inspiran en conceptos de bienestar y gamificación.</p></div></details>
+<details class="accordion reveal"><summary>💬 Inteligencia artificial</summary><div class="accordion-body"><p>La integración de una API de IA permite una experiencia conversacional con un personaje dentro del videojuego. No está planteada como diagnóstico ni terapia.</p></div></details>
+<details class="accordion reveal"><summary>🛠️ Herramientas utilizadas</summary><div class="accordion-body"><p><b>Unity 3D, C#, OpenAI API, VRoid Studio, UniVRM y Figma.</b> Estas herramientas apoyan el desarrollo del entorno, los personajes y la interacción.</p></div></details>
+<details class="accordion reveal"><summary>🌱 Posibles próximos pasos</summary><div class="accordion-body"><p>Ampliar las misiones, seguir mejorando la experiencia de usuario y evaluar la propuesta con participantes y orientación profesional.</p></div></details>
+</div>
+<div class="safety reveal"><div class="safety-icon">💜</div><p><strong>Una nota importante:</strong> Mishi es un prototipo académico orientado al bienestar estudiantil. No reemplaza la atención de profesionales de salud mental ni constituye una herramienta de diagnóstico o tratamiento. Ante una situación de riesgo, busca ayuda profesional o servicios de emergencia de tu localidad.</p></div>
+</div></section>
+<section class="section" id="explorar"><div class="wrap"><div class="final-cta reveal"><span class="eyebrow">Una invitación al Mishi-verso</span><h2>¿Lista para descubrir<br>un pequeño mundo?</h2><p>Explora las demostraciones y conoce más sobre el proceso detrás de Mishi, desde la idea hasta el prototipo.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="URL_DE_TUS_VIDEOS">Ver demostraciones ↗</a><a class="btn btn-secondary" href="URL_DE_TU_TESIS">Conocer la tesis ↗</a></div></div></div></section>
 </main>
 <footer class="footer"><div class="wrap footer-inner"><span><strong>mishi.</strong> Un pequeño mundo para cuidar de ti.</span><span>Proyecto de titulación · Ingeniería en Informática · Universidad Bernardo O’Higgins</span></div></footer>
 <script>
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-  }), {threshold: 0.12});
-  revealEls.forEach(el => observer.observe(el));
-} else { revealEls.forEach(el => el.classList.add('visible')); }
+const revealItems=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.12});revealItems.forEach(el=>observer.observe(el))}else{revealItems.forEach(el=>el.classList.add('visible'))}
 </script>
-</body>
-</html>
+</body></html>
