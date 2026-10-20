@@ -261,24 +261,26 @@ Mishi no reemplaza la atención de profesionales de la salud mental ni es una he
 
 ---
 
+
+---
+
 <div align="center">
 
-### ☾ Todo gran universo comienza con una pequeña idea. ✧
+### ☾ ¡Nos vemos en la próxima aventura! ✨
+
+*Pequeñas aventuras, grandes intenciones.*
 
 <br>
 
-*Gracias por visitar el Mishi-verso.*
-
-**Pequeñas aventuras, grandes intenciones.** 🌱
+Gracias por visitar el Mishi-verso.  
+Ojalá encuentres siempre un momento para ti. 🌱
 
 <br>
 
 Hecho con 💜 por **Kaled San Martin**
 
-<sub>PROYECTO ACADÉMICO · INGENIERÍA EN INFORMÁTICA · UBO</sub>
+<sub>PROYECTO DE TITULACIÓN · INGENIERÍA EN INFORMÁTICA</sub>
 
-<br>
-
-<img src="https://img.shields.io/badge/hecho_con-cariño-F2A9DD?style=flat-square&labelColor=211633" alt="Hecho con cariño">
+<sub>UNIVERSIDAD BERNARDO O’HIGGINS · UBO</sub>
 
 </div>
