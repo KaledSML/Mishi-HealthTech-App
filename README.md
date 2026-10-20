@@ -22,6 +22,14 @@ Un videojuego 3D que integra **inteligencia artificial, misiones de autocuidado 
 <img src="https://img.shields.io/badge/Desarrollo-Unity_3D-9CC8D8?style=flat-square" alt="Unity 3D">
 <img src="https://img.shields.io/badge/Enfoque-Bienestar-F2C6D4?style=flat-square" alt="Bienestar estudiantil">
 
+<img src="https://img.shields.io/badge/Unity-222222?style=for-the-badge&logo=unity&logoColor=white" alt="Unity">
+<img src="https://img.shields.io/badge/C%23-68217A?style=for-the-badge&logo=csharp&logoColor=white" alt="C sharp">
+<img src="https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI API">
+<img src="https://img.shields.io/badge/VRoid_Studio-8E7CC3?style=for-the-badge" alt="VRoid Studio">
+<img src="https://img.shields.io/badge/UniVRM-8FB9A8?style=for-the-badge" alt="UniVRM">
+<img src="https://img.shields.io/badge/Figma-E8A1B0?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+
+
 </div>
 
 ---
@@ -59,18 +67,6 @@ Un recurso audiovisual relacionado con los primeros auxilios psicológicos.
 </tr>
 </table>
 
-## 🛠️ Hecho con cariño y tecnología
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/Unity-222222?style=for-the-badge&logo=unity&logoColor=white" alt="Unity">
-<img src="https://img.shields.io/badge/C%23-68217A?style=for-the-badge&logo=csharp&logoColor=white" alt="C sharp">
-<img src="https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI API">
-<img src="https://img.shields.io/badge/VRoid_Studio-8E7CC3?style=for-the-badge" alt="VRoid Studio">
-<img src="https://img.shields.io/badge/UniVRM-8FB9A8?style=for-the-badge" alt="UniVRM">
-<img src="https://img.shields.io/badge/Figma-E8A1B0?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
-
-</div>
 
 ## ✨ Explora el Mishi-verso
 
