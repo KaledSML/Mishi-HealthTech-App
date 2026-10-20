@@ -115,7 +115,7 @@ Un recurso audiovisual relacionado con los primeros auxilios psicológicos forma
 
 <br>
 
-<img src="mishi-mundo.png" alt="El mundo de Mishi" width="100%">
+<img src="mishi-personaje.png" alt="El mundo de Mishi" width="100%">
 
 <br>
 
@@ -129,7 +129,7 @@ Un recurso audiovisual relacionado con los primeros auxilios psicológicos forma
 <tr>
 <td width="50%" valign="top">
 
-<img src="mishi-personaje.png" alt="Personaje de Mishi" width="100%">
+<img src="mishi-mundo.png" alt="Personaje de Mishi" width="100%">
 
 <div align="center">
 
