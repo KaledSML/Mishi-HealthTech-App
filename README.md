@@ -1,40 +1,46 @@
 <div align="center">
 
-<img src="mishi-banner.png" alt="Mishi: un pequeño mundo para cuidar de ti" width="100%">
+<img src="mishi-banner.png" alt="Mishi — un pequeño mundo para cuidar de ti" width="100%">
 
 # ✨ Mishi
 ### Un pequeño mundo para cuidar de ti 🌱
 
 Un videojuego 3D que combina **inteligencia artificial**, **misiones de autocuidado** y **recursos de apoyo** para estudiantes de educación superior.
 
-[🌙 Explorar la web](URL_DE_TU_WEB) · [🎮 Ver demostraciones](URL_DE_TUS_VIDEOS) · [📖 Conocer la tesis](URL_DE_TU_TESIS)
+[🌙 Web del proyecto](https://kaledsml.github.io/Mishi-HealthTech-App/) · [🎮 Playlist](https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq) · [📜 Póster](https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link)
 
 </div>
 
 ---
 
-### 💛 Conoce a Mishi
+### 💛 Una aventura con propósito
 
-Una pequeña criatura slime con orejitas de gato y una hojita en la cabeza que acompaña a Alicia en su aventura.
+- 💬 **Conversación con IA** dentro del videojuego.
+- 🌿 **Misiones gamificadas** que invitan al autocuidado.
+- 💗 **Un recurso audiovisual** sobre primeros auxilios psicológicos.
 
-| 💬 Conversa | 🌿 Explora | 💗 Encuentra apoyo |
-|:--:|:--:|:--:|
-| Chat con IA | Misiones de autocuidado | Recurso audiovisual de primeros auxilios psicológicos |
+### 🛠️ Hecho con
 
-### ✨ Hecho con
+**Unity 3D** · **C#** · **OpenAI API** · **VRoid Studio** · **UniVRM** · **Figma**
 
-**Unity 3D** · **C#** · **OpenAI API** · **VRoid Studio** · **Figma**
+### ✨ Explora más
 
-### 🪄 Sobre el proyecto
+- [🌐 Web publicada](https://kaledsml.github.io/Mishi-HealthTech-App/)
+- [💻 Repositorio de GitHub](https://github.com/KaledSML/Mishi-HealthTech-App/)
+- [🎨 Diseño en Figma](https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1)
+- [▶️ Videos de demostración](https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq)
+- [🏅 AUF — 60 secondes pour convaincre (2022)](https://www.youtube.com/watch?v=8aOUeTWVn2Y)
+
+### 🎓 Sobre el proyecto
 
 Proyecto de titulación de Ingeniería en Informática, Universidad Bernardo O’Higgins.
 
-Mishi es un prototipo de bienestar estudiantil; **no reemplaza la atención de profesionales de salud mental ni constituye una herramienta de diagnóstico o tratamiento**.
+Mishi es un prototipo académico orientado al bienestar estudiantil; **no reemplaza la atención profesional ni constituye una herramienta de diagnóstico o tratamiento**.
 
 ---
 
 <div align="center">
 🌙 **Explora el Mishi-verso** 🌙
 
-<sub>Diseñado por Kaled San Martin · Proyecto académico</sub>
+<sub>Proyecto académico · Kaled San Martin</sub>
 </div>
