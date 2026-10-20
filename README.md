@@ -76,10 +76,6 @@ Un recurso audiovisual relacionado con los primeros auxilios psicológicos.
 
 <div align="center">
 
-<a href="https://kaledsml.github.io/Mishi-HealthTech-App/"><img src="https://img.shields.io/badge/🌐_Sitio_web-Explorar-8064C8?style=for-the-badge" alt="Sitio web"></a>
-
-<a href="https://github.com/KaledSML/Mishi-HealthTech-App/"><img src="https://img.shields.io/badge/💻_GitHub-Repositorio-34313F?style=for-the-badge&logo=github&logoColor=white" alt="Repositorio"></a>
-
 <a href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1"><img src="https://img.shields.io/badge/🎨_Figma-Diseño-D98BA7?style=for-the-badge&logo=figma&logoColor=white" alt="Diseño en Figma"></a>
 
 <a href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"><img src="https://img.shields.io/badge/▶️_YouTube-Demostraciones-CB5555?style=for-the-badge&logo=youtube&logoColor=white" alt="Demostraciones"></a>
