@@ -22,7 +22,28 @@ a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--m
 .world-layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:44px;align-items:center}.world-copy h2{font-size:clamp(2.2rem,4vw,3.6rem);margin:14px 0 18px}.world-copy>p{color:var(--muted)}.checklist{display:grid;gap:15px;margin-top:24px}.check{display:flex;align-items:flex-start;gap:12px}.check-symbol{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:12px;background:#c7a8ff17;color:var(--lav)}.check strong{display:block}.check span{display:block;color:var(--muted);font-size:.9rem}.screens{display:grid;grid-template-columns:1fr 1fr;gap:13px}.screen{margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--panel)}.screen:first-child{grid-column:span 2}.screen img{width:100%;height:100%;max-height:250px;display:block;object-fit:cover;transition:transform .5s}.screen:first-child img{max-height:330px}.screen:hover img{transform:scale(1.035)}.screen figcaption{padding:11px 14px;font-size:.81rem;color:var(--muted)}
 .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:var(--line)}.tech{background:#241a36;padding:23px 15px;text-align:center}.tech-icon{font-size:1.5rem}.tech strong{display:block;margin:7px 0 2px}.tech span{color:var(--muted);font-size:.79rem}
 .accordions{display:grid;grid-template-columns:1fr 1fr;gap:13px}.accordion{border-radius:18px;border:1px solid var(--line);background:#ffffff05;overflow:hidden}.accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 20px;font-weight:800}.accordion summary::-webkit-details-marker{display:none}.accordion summary:after{content:"＋";color:var(--lav);font-size:1.2rem}.accordion[open] summary:after{content:"−"}.accordion-body{padding:0 20px 20px;color:var(--muted);font-size:.93rem}.accordion-body p{margin:0}.safety{display:flex;gap:15px;align-items:flex-start;margin-top:24px;padding:22px;border:1px solid #ffe2a333;border-radius:20px;background:linear-gradient(110deg,#ffe2a10b,#f2a9dd08)}.safety-icon{font-size:1.55rem}.safety p{margin:0;color:var(--muted);font-size:.92rem}.safety strong{color:var(--gold)}
-.final-cta{position:relative;text-align:center;padding:66px 28px;border-radius:30px;overflow:hidden;border:1px solid #c7a8ff32;background:radial-gradient(ellipse at 50% 0%,#b999ff22,transparent 65%),linear-gradient(145deg,#281c3e,#211630)}.final-cta:before{content:"✦";position:absolute;left:9%;top:16%;color:var(--gold);font-size:1.5rem}.final-cta:after{content:"✧";position:absolute;right:11%;bottom:16%;color:var(--pink);font-size:2rem}.final-cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:13px 0}.final-cta p{max-width:600px;margin:0 auto;color:var(--muted)}.footer{padding:29px 0 38px;color:#a99dbb;font-size:.82rem}.footer-inner{border-top:1px solid var(--line);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.footer strong{color:var(--lav)}
+
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.video-card{display:block;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#302247d9,#221833f5);transition:transform .25s,border-color .25s,box-shadow .25s}
+.video-card:hover{transform:translateY(-5px);border-color:#c7a8ff72;box-shadow:0 16px 36px #0003}
+.video-thumb{position:relative;aspect-ratio:16/9;background:#302344;overflow:hidden}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.video-card:hover .video-thumb img{transform:scale(1.045)}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff0f0e8;color:#402547;padding-left:3px;box-shadow:0 5px 20px #0004}
+.video-info{padding:15px 16px 17px;display:grid;gap:5px}
+.video-number{font-size:.69rem;letter-spacing:.14em;color:var(--mint);font-weight:800}
+.video-info strong{font:800 1.02rem Nunito,sans-serif}
+.video-open{font-size:.79rem;color:var(--lav);margin-top:3px}
+.video-all{display:flex;justify-content:center;margin-top:28px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:26px}
+.resource-link{padding:19px;border-radius:18px;border:1px solid var(--line);background:#ffffff06;display:flex;gap:13px;align-items:center;transition:transform .2s,border-color .2s}
+.resource-link:hover{transform:translateY(-3px);border-color:#c7a8ff70}
+.resource-icon{width:42px;height:42px;border-radius:14px;background:#c7a8ff18;display:grid;place-items:center;font-size:1.25rem;flex:none}
+.resource-link strong{display:block;font-family:Nunito,sans-serif}
+.resource-link span{font-size:.8rem;color:var(--muted)}
+@media(max-width:850px){.video-grid{grid-template-columns:repeat(2,1fr)}.resource-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.video-grid{grid-template-columns:1fr}}
+\n.final-cta{position:relative;text-align:center;padding:66px 28px;border-radius:30px;overflow:hidden;border:1px solid #c7a8ff32;background:radial-gradient(ellipse at 50% 0%,#b999ff22,transparent 65%),linear-gradient(145deg,#281c3e,#211630)}.final-cta:before{content:"✦";position:absolute;left:9%;top:16%;color:var(--gold);font-size:1.5rem}.final-cta:after{content:"✧";position:absolute;right:11%;bottom:16%;color:var(--pink);font-size:2rem}.final-cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:13px 0}.final-cta p{max-width:600px;margin:0 auto;color:var(--muted)}.footer{padding:29px 0 38px;color:#a99dbb;font-size:.82rem}.footer-inner{border-top:1px solid var(--line);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.footer strong{color:var(--lav)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:850px){.hero-grid,.world-layout{grid-template-columns:1fr}.hero-grid{gap:12px}.hero-copy{text-align:center}.hero-copy>p{margin:auto}.hero-actions,.hero-meta{justify-content:center}.art-stage{min-height:400px}.game-art{height:370px}.world-copy{max-width:680px;margin:auto}.feature-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:1fr 1fr}.navlinks{gap:13px}.navlinks a:not(.nav-cta){display:none}}
 @media(max-width:560px){.wrap{width:calc(100% - 26px)}.nav-inner{min-height:63px}.brand{font-size:1.12rem}.nav-cta{font-size:.81rem;padding:8px 12px}.hero{padding:32px 0 50px}.hero-grid{gap:0}h1{font-size:clamp(2.45rem,12vw,3.4rem)}.hero-copy>p{font-size:1rem}.hero-actions .btn{width:100%}.hero-meta{font-size:.76rem}.art-stage{min-height:320px;margin-top:12px}.orbit{width:90%}.game-art{width:95%;height:300px;border-radius:24px}.floating-mishi{width:105px;height:105px;right:-1px;bottom:4px}.bubble{right:73px;bottom:105px;font-size:.72rem;padding:7px 10px}.art-caption{left:14px;right:14px;bottom:12px}.section{padding:60px 0}.screens{gap:9px}.screen img,.screen:first-child img{max-height:220px}.tech{padding:18px 8px}.accordions{grid-template-columns:1fr}.footer-inner{align-items:flex-start;flex-direction:column}.quote-band{align-items:flex-start}}
@@ -35,7 +56,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--m
 </div>
 <header class="nav"><div class="wrap nav-inner">
 <a class="brand" href="#inicio"><span class="brand-icon">✿</span> mishi<span style="color:var(--lav)">.</span></a>
-<nav class="navlinks" aria-label="Navegación principal"><a href="#experiencia">La experiencia</a><a href="#mundo">Mishi y Alicia</a><a href="#proyecto">El proyecto</a><a class="nav-cta" href="#explorar">Entrar al Mishi-verso ↗</a></nav>
+<nav class="navlinks" aria-label="Navegación principal"><a href="#experiencia">La experiencia</a><a href="#mundo">Mishi y Alicia</a><a href="#demostraciones">Videos</a><a href="#proyecto">El proyecto</a><a href="#recursos">Enlaces</a><a class="nav-cta" href="#explorar">Entrar al Mishi-verso ↗</a></nav>
 </div></header>
 <main id="inicio">
 <section class="hero"><div class="wrap hero-grid">
@@ -83,7 +104,58 @@ a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--m
 </div>
 <div class="safety reveal"><div class="safety-icon">💜</div><p><strong>Una nota importante:</strong> Mishi es un prototipo académico orientado al bienestar estudiantil. No reemplaza la atención de profesionales de salud mental ni constituye una herramienta de diagnóstico o tratamiento. Ante una situación de riesgo, busca ayuda profesional o servicios de emergencia de tu localidad.</p></div>
 </div></section>
-<section class="section" id="explorar"><div class="wrap"><div class="final-cta reveal"><span class="eyebrow">Una invitación al Mishi-verso</span><h2>¿Lista para descubrir<br>un pequeño mundo?</h2><p>Explora las demostraciones y conoce más sobre el proceso detrás de Mishi, desde la idea hasta el prototipo.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="URL_DE_TUS_VIDEOS">Ver demostraciones ↗</a><a class="btn btn-secondary" href="URL_DE_TU_TESIS">Conocer la tesis ↗</a></div></div></div></section>
+
+<section class="section videos-section" id="demostraciones"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">Luces, cámara… Mishi</span><h2>Un vistazo a la aventura.</h2><p>Pequeños fragmentos del prototipo y su desarrollo. Elige uno para verlo en YouTube o visita la playlist completa.</p></div>
+<div class="video-grid">
+<a class="video-card reveal" href="https://youtu.be/dlXU_IahopU" target="_blank" rel="noopener noreferrer" aria-label="Ver video 1: Conoce Mishi">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/dlXU_IahopU/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 01</span><strong>Conoce Mishi</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/T5KQeqBgrwo" target="_blank" rel="noopener noreferrer" aria-label="Ver video 2: Explorando el mundo">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/T5KQeqBgrwo/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 02</span><strong>Explorando el mundo</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/fpMdAi5Nn0o" target="_blank" rel="noopener noreferrer" aria-label="Ver video 3: La experiencia de juego">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/fpMdAi5Nn0o/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 03</span><strong>La experiencia de juego</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/_cfLRPfI7u8" target="_blank" rel="noopener noreferrer" aria-label="Ver video 4: Personajes y entorno">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/_cfLRPfI7u8/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 04</span><strong>Personajes y entorno</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/JL9prLLMgMA" target="_blank" rel="noopener noreferrer" aria-label="Ver video 5: Interacción en el juego">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/JL9prLLMgMA/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 05</span><strong>Interacción en el juego</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/1hSqgYML_ww" target="_blank" rel="noopener noreferrer" aria-label="Ver video 6: Mishi en acción">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/1hSqgYML_ww/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 06</span><strong>Mishi en acción</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/qPd3npeGM_A" target="_blank" rel="noopener noreferrer" aria-label="Ver video 7: Recorrido por el prototipo">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/qPd3npeGM_A/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 07</span><strong>Recorrido por el prototipo</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/pIdHgLZ9bTw" target="_blank" rel="noopener noreferrer" aria-label="Ver video 8: Detalles de la experiencia">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/pIdHgLZ9bTw/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 08</span><strong>Detalles de la experiencia</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/1T1iKlbJVDI" target="_blank" rel="noopener noreferrer" aria-label="Ver video 9: Demostración del proyecto">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/1T1iKlbJVDI/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 09</span><strong>Demostración del proyecto</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>\n<a class="video-card reveal" href="https://youtu.be/zg57-NAUB-Q" target="_blank" rel="noopener noreferrer" aria-label="Ver video 10: Un vistazo al desarrollo">
+<div class="video-thumb"><img src="https://img.youtube.com/vi/zg57-NAUB-Q/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+<div class="video-info"><span class="video-number">DEMO 10</span><strong>Un vistazo al desarrollo</strong><span class="video-open">Ver en YouTube ↗</span></div>
+</a>
+</div>
+<div class="video-all reveal"><a class="btn btn-primary" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer">Ver la playlist completa ↗</a></div>
+</div></section>
+
+<section class="section" id="recursos"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">Más allá del juego</span><h2>¿Quieres conocer el proyecto?</h2><p>Explora el prototipo, sus diseños y el material de presentación.</p></div>
+<div class="resource-grid">
+<a class="resource-link reveal" href="https://kaledsml.github.io/Mishi-HealthTech-App/" target="_blank" rel="noopener noreferrer"><span class="resource-icon">🌐</span><span><strong>Web del proyecto</strong><span>Visita la página publicada ↗</span></span></a>
+<a class="resource-link reveal" href="https://github.com/KaledSML/Mishi-HealthTech-App/" target="_blank" rel="noopener noreferrer"><span class="resource-icon">⌘</span><span><strong>Repositorio en GitHub</strong><span>Conoce el proyecto ↗</span></span></a>
+<a class="resource-link reveal" href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1" target="_blank" rel="noopener noreferrer"><span class="resource-icon">🎨</span><span><strong>Diseño en Figma</strong><span>Explora la propuesta visual ↗</span></span></a>
+<a class="resource-link reveal" href="https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><span class="resource-icon">📜</span><span><strong>Póster de defensa</strong><span>Material de presentación ↗</span></span></a>
+<a class="resource-link reveal" href="https://canva.link/bj6jjqdlc8j60y9" target="_blank" rel="noopener noreferrer"><span class="resource-icon">📚</span><span><strong>Memoria de título en Canva</strong><span>Consulta la memoria en formato interactivo ↗</span></span></a>
+<a class="resource-link reveal" href="https://www.youtube.com/watch?v=8aOUeTWVn2Y" target="_blank" rel="noopener noreferrer"><span class="resource-icon">🏅</span><span><strong>60 secondes pour convaincre</strong><span>Finalistas · AUF 2022 ↗</span></span></a>
+<a class="resource-link reveal" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer"><span class="resource-icon">▶</span><span><strong>Playlist de demostraciones</strong><span>Los videos de Mishi ↗</span></span></a>
+</div>
+</div></section>
+<section class="section" id="explorar"><div class="wrap"><div class="final-cta reveal"><span class="eyebrow">Una invitación al Mishi-verso</span><h2>¿Lista para descubrir<br>un pequeño mundo?</h2><p>Explora las demostraciones y conoce más sobre el proceso detrás de Mishi, desde la idea hasta el prototipo.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer">Ver playlist ↗</a><a class="btn btn-secondary" href="https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Ver el póster ↗</a></div></div></div></section>
 </main>
 <footer class="footer"><div class="wrap footer-inner"><span><strong>mishi.</strong> Un pequeño mundo para cuidar de ti.</span><span>Proyecto de titulación · Ingeniería en Informática · Universidad Bernardo O’Higgins</span></div></footer>
 <script>
