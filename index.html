@@ -1,173 +1,683 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#171128">
-<meta name="description" content="Mishi: un pequeño mundo para cuidar de ti. Una experiencia 3D con IA, misiones de autocuidado y recursos de apoyo para estudiantes.">
-<title>Mishi — Un pequeño mundo para cuidar de ti</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
-:root{--bg:#171126;--bg2:#211633;--panel:#281d40;--panel2:#33254e;--lav:#c7a8ff;--pink:#f2a9dd;--mint:#bdf0d7;--gold:#ffe2a3;--cream:#fff8f0;--muted:#c9bfd8;--line:#ffffff20;--max:1160px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;line-height:1.65;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(ellipse at 10% 0%,#7954b52b,transparent 35%),radial-gradient(ellipse at 90% 35%,#5d65b21b,transparent 32%),radial-gradient(ellipse at 50% 100%,#b45b9b17,transparent 40%)}
-a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
-.starfield{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff0bd;opacity:.65;animation:twinkle 3.2s ease-in-out infinite alternate}.star:nth-child(2n){background:#d8bdff;animation-delay:-1.7s}.star:nth-child(3n){width:2px;height:2px;animation-delay:-.7s}@keyframes twinkle{from{opacity:.18;transform:scale(.75)}to{opacity:.8;transform:scale(1.4)}}
-.nav{position:sticky;top:0;z-index:20;background:#171126d9;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;font:900 1.28rem Nunito,sans-serif;letter-spacing:.02em}.brand-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,var(--gold),var(--pink),var(--lav));color:#32203f;box-shadow:0 0 25px #c6a8ff35}.navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.9rem}.navlinks a:hover{color:white}.nav-cta{padding:9px 15px;border-radius:999px;background:var(--lav);color:#271938!important;font-weight:800}
-.hero{padding:58px 0 74px;position:relative}.hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:38px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--mint);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.eyebrow:before{content:"✦";color:var(--pink)}h1,h2,h3{font-family:Nunito,sans-serif;line-height:1.13;letter-spacing:-.035em;margin:0;font-weight:900}h1{font-size:clamp(2.7rem,5vw,5.1rem);margin:16px 0 19px}h1 em{font-style:normal;background:linear-gradient(95deg,var(--gold),var(--pink),var(--lav));background-clip:text;color:transparent}.hero-copy>p{font-size:1.08rem;max-width:540px;color:var(--muted);margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 19px;border-radius:999px;font-weight:800;transition:transform .22s,box-shadow .22s,border-color .22s;border:1px solid var(--line)}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #0004}.btn-primary{background:linear-gradient(110deg,var(--gold),var(--pink));color:#2a1a39;border:0}.btn-secondary{background:#ffffff07}.hero-meta{display:flex;align-items:center;gap:12px;margin-top:27px;color:#bdb1d0;font-size:.83rem}.tiny-stars{color:var(--gold);letter-spacing:.12em}
-.art-stage{position:relative;min-height:480px;display:grid;place-items:center;isolation:isolate}.art-glow{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#a882ed2c,transparent 68%);filter:blur(8px);z-index:-1}.orbit{position:absolute;width:87%;aspect-ratio:1;border:1px solid #d4bdff24;border-radius:50%;animation:spin 38s linear infinite}.orbit:before,.orbit:after{content:"✦";position:absolute;color:var(--gold);font-size:1.15rem}.orbit:before{top:8%;left:17%}.orbit:after{bottom:13%;right:10%;color:var(--pink)}@keyframes spin{to{transform:rotate(360deg)}}
-.game-art{position:relative;width:min(100%,560px);height:420px;border-radius:36px;overflow:hidden;border:1px solid #e0cfff38;box-shadow:0 35px 80px #07030d70;background:#38254f}.game-art img{width:100%;height:100%;object-fit:cover;object-position:62% center;display:block;filter:saturate(.9)}.game-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#181127bd 0%,transparent 48%),linear-gradient(90deg,#21163320,transparent 65%);pointer-events:none}.art-caption{position:absolute;z-index:1;left:22px;right:22px;bottom:18px;display:flex;justify-content:space-between;align-items:end;gap:12px}.art-caption strong{font:900 1.25rem Nunito,sans-serif;display:block}.art-caption span{font-size:.82rem;color:#e0d6ef}.floating-mishi{position:absolute;width:145px;height:145px;right:-8px;bottom:16px;z-index:3;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 16px 24px #09051170)}.floating-mishi img{width:100%;height:100%;object-fit:cover;object-position:center;border:3px solid #f6e6c9;border-radius:42% 42% 48% 48%;box-shadow:0 0 0 7px #c5a8ff20}.bubble{position:absolute;right:112px;bottom:140px;z-index:4;background:#fff8ee;color:#34213d;border-radius:17px 17px 4px 17px;padding:9px 13px;font-size:.82rem;font-weight:800;box-shadow:0 8px 30px #0003;animation:bob 4s ease-in-out infinite reverse}.bubble:after{content:"";position:absolute;right:-6px;bottom:1px;border-width:7px 0 0 7px;border-style:solid;border-color:transparent transparent transparent #fff8ee}@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
-.section{padding:80px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 36px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);margin:12px 0 14px}.section-head p{color:var(--muted);margin:0}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature{padding:27px 25px 25px;position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#302247d9,#221833f5);border:1px solid var(--line);transition:transform .25s,border-color .25s,background .25s}.feature:hover{transform:translateY(-6px);border-color:#c7a8ff6b;background:linear-gradient(145deg,#392751,#261b3b)}.feature-icon{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;font-size:1.7rem;margin-bottom:20px;background:#c7a8ff18;border:1px solid #c7a8ff20}.feature:nth-child(2) .feature-icon{background:#bdf0d71b;border-color:#bdf0d72b}.feature:nth-child(3) .feature-icon{background:#f2a9dd1b;border-color:#f2a9dd2b}.feature h3{font-size:1.32rem;margin-bottom:9px}.feature p{color:var(--muted);font-size:.94rem;margin:0}.feature-foot{display:flex;align-items:center;gap:8px;color:var(--lav);font-size:.78rem;font-weight:800;margin-top:20px}
-.quote-band{margin-top:25px;padding:19px 22px;border:1px solid #bdf0d72b;border-radius:18px;background:linear-gradient(100deg,#bdf0d70b,#c7a8ff0b);display:flex;gap:13px;align-items:center;color:var(--muted)}.quote-band b{color:var(--mint)}
-.world-layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:44px;align-items:center}.world-copy h2{font-size:clamp(2.2rem,4vw,3.6rem);margin:14px 0 18px}.world-copy>p{color:var(--muted)}.checklist{display:grid;gap:15px;margin-top:24px}.check{display:flex;align-items:flex-start;gap:12px}.check-symbol{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:12px;background:#c7a8ff17;color:var(--lav)}.check strong{display:block}.check span{display:block;color:var(--muted);font-size:.9rem}.screens{display:grid;grid-template-columns:1fr 1fr;gap:13px}.screen{margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--panel)}.screen:first-child{grid-column:span 2}.screen img{width:100%;height:100%;max-height:250px;display:block;object-fit:cover;transition:transform .5s}.screen:first-child img{max-height:330px}.screen:hover img{transform:scale(1.035)}.screen figcaption{padding:11px 14px;font-size:.81rem;color:var(--muted)}
-.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:var(--line)}.tech{background:#241a36;padding:23px 15px;text-align:center}.tech-icon{font-size:1.5rem}.tech strong{display:block;margin:7px 0 2px}.tech span{color:var(--muted);font-size:.79rem}
-.accordions{display:grid;grid-template-columns:1fr 1fr;gap:13px}.accordion{border-radius:18px;border:1px solid var(--line);background:#ffffff05;overflow:hidden}.accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 20px;font-weight:800}.accordion summary::-webkit-details-marker{display:none}.accordion summary:after{content:"＋";color:var(--lav);font-size:1.2rem}.accordion[open] summary:after{content:"−"}.accordion-body{padding:0 20px 20px;color:var(--muted);font-size:.93rem}.accordion-body p{margin:0}.safety{display:flex;gap:15px;align-items:flex-start;margin-top:24px;padding:22px;border:1px solid #ffe2a333;border-radius:20px;background:linear-gradient(110deg,#ffe2a10b,#f2a9dd08)}.safety-icon{font-size:1.55rem}.safety p{margin:0;color:var(--muted);font-size:.92rem}.safety strong{color:var(--gold)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.video-card{display:block;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#302247d9,#221833f5);transition:transform .25s,border-color .25s,box-shadow .25s}
-.video-card:hover{transform:translateY(-5px);border-color:#c7a8ff72;box-shadow:0 16px 36px #0003}
-.video-thumb{position:relative;aspect-ratio:16/9;background:#302344;overflow:hidden}
-.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.video-card:hover .video-thumb img{transform:scale(1.045)}
-.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff0f0e8;color:#402547;padding-left:3px;box-shadow:0 5px 20px #0004}
-.video-info{padding:15px 16px 17px;display:grid;gap:5px}
-.video-number{font-size:.69rem;letter-spacing:.14em;color:var(--mint);font-weight:800}
-.video-info strong{font:800 1.02rem Nunito,sans-serif}
-.video-open{font-size:.79rem;color:var(--lav);margin-top:3px}
-.video-all{display:flex;justify-content:center;margin-top:28px}
-.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:26px}
-.resource-link{padding:19px;border-radius:18px;border:1px solid var(--line);background:#ffffff06;display:flex;gap:13px;align-items:center;transition:transform .2s,border-color .2s}
-.resource-link:hover{transform:translateY(-3px);border-color:#c7a8ff70}
-.resource-icon{width:42px;height:42px;border-radius:14px;background:#c7a8ff18;display:grid;place-items:center;font-size:1.25rem;flex:none}
-.resource-link strong{display:block;font-family:Nunito,sans-serif}
-.resource-link span{font-size:.8rem;color:var(--muted)}
-@media(max-width:850px){.video-grid{grid-template-columns:repeat(2,1fr)}.resource-grid{grid-template-columns:1fr}}
-@media(max-width:560px){.video-grid{grid-template-columns:1fr}}
-\n.final-cta{position:relative;text-align:center;padding:66px 28px;border-radius:30px;overflow:hidden;border:1px solid #c7a8ff32;background:radial-gradient(ellipse at 50% 0%,#b999ff22,transparent 65%),linear-gradient(145deg,#281c3e,#211630)}.final-cta:before{content:"✦";position:absolute;left:9%;top:16%;color:var(--gold);font-size:1.5rem}.final-cta:after{content:"✧";position:absolute;right:11%;bottom:16%;color:var(--pink);font-size:2rem}.final-cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:13px 0}.final-cta p{max-width:600px;margin:0 auto;color:var(--muted)}.footer{padding:29px 0 38px;color:#a99dbb;font-size:.82rem}.footer-inner{border-top:1px solid var(--line);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.footer strong{color:var(--lav)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:850px){.hero-grid,.world-layout{grid-template-columns:1fr}.hero-grid{gap:12px}.hero-copy{text-align:center}.hero-copy>p{margin:auto}.hero-actions,.hero-meta{justify-content:center}.art-stage{min-height:400px}.game-art{height:370px}.world-copy{max-width:680px;margin:auto}.feature-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:1fr 1fr}.navlinks{gap:13px}.navlinks a:not(.nav-cta){display:none}}
-@media(max-width:560px){.wrap{width:calc(100% - 26px)}.nav-inner{min-height:63px}.brand{font-size:1.12rem}.nav-cta{font-size:.81rem;padding:8px 12px}.hero{padding:32px 0 50px}.hero-grid{gap:0}h1{font-size:clamp(2.45rem,12vw,3.4rem)}.hero-copy>p{font-size:1rem}.hero-actions .btn{width:100%}.hero-meta{font-size:.76rem}.art-stage{min-height:320px;margin-top:12px}.orbit{width:90%}.game-art{width:95%;height:300px;border-radius:24px}.floating-mishi{width:105px;height:105px;right:-1px;bottom:4px}.bubble{right:73px;bottom:105px;font-size:.72rem;padding:7px 10px}.art-caption{left:14px;right:14px;bottom:12px}.section{padding:60px 0}.screens{gap:9px}.screen img,.screen:first-child img{max-height:220px}.tech{padding:18px 8px}.accordions{grid-template-columns:1fr}.footer-inner{align-items:flex-start;flex-direction:column}.quote-band{align-items:flex-start}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.star,.orbit,.floating-mishi,.bubble{animation:none!important}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{transition:none!important}}
-</style>
+  <meta
+    name="description"
+    content="Mishi: un pequeño mundo para cuidar de ti. Un proyecto que une tecnología, bienestar emocional y un mundo virtual interactivo."
+  >
+
+  <meta name="theme-color" content="#171126">
+
+  <title>Mishi — Un pequeño mundo para cuidar de ti</title>
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div class="starfield" aria-hidden="true">
-<span class="star" style="left:8%;top:17%"></span><span class="star" style="left:23%;top:33%"></span><span class="star" style="left:72%;top:13%"></span><span class="star" style="left:89%;top:28%"></span><span class="star" style="left:62%;top:54%"></span><span class="star" style="left:14%;top:73%"></span><span class="star" style="left:83%;top:82%"></span><span class="star" style="left:42%;top:91%"></span><span class="star" style="left:54%;top:22%"></span><span class="star" style="left:34%;top:63%"></span><span class="star" style="left:94%;top:59%"></span><span class="star" style="left:5%;top:47%"></span>
-</div>
-<header class="nav"><div class="wrap nav-inner">
-<a class="brand" href="#inicio"><span class="brand-icon">✿</span> mishi<span style="color:var(--lav)">.</span></a>
-<nav class="navlinks" aria-label="Navegación principal"><a href="#experiencia">La experiencia</a><a href="#mundo">Mishi y Alicia</a><a href="#demostraciones">Videos</a><a href="#proyecto">El proyecto</a><a href="#recursos">Enlaces</a><a class="nav-cta" href="#explorar">Entrar al Mishi-verso ↗</a></nav>
-</div></header>
-<main id="inicio">
-<section class="hero"><div class="wrap hero-grid">
-<div class="hero-copy reveal">
-<span class="eyebrow">Un mundo para hacer una pausa</span>
-<h1>Pequeños pasos.<br><em>Un poquito de magia.</em></h1>
-<p>Conoce a Mishi y acompaña a Alicia en una aventura 3D que reúne inteligencia artificial, misiones de autocuidado y recursos de apoyo para estudiantes.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="#experiencia">Descubrir Mishi <span>✦</span></a><a class="btn btn-secondary" href="#mundo">Conocer su mundo ↓</a></div>
-<div class="hero-meta"><span class="tiny-stars">✦ ✦ ✦</span><span>Videojuego 3D · IA · Bienestar estudiantil</span></div>
-</div>
-<div class="art-stage reveal">
-<div class="art-glow"></div><div class="orbit"></div>
-<div class="game-art"><img src="mishi-mundo.png" alt="Alicia explora el jardín verde y mágico del videojuego."><div class="art-caption"><div><strong>Bienvenida al Mishi-verso</strong><span>Un espacio para explorar y cuidarte</span></div><span>☾ ✦</span></div></div>
-<div class="floating-mishi"><img src="mishi-personaje.png" alt="Mishi, una bolita slime amarilla con orejitas de gato y una hojita verde."></div><div class="bubble">¡Hola, soy Mishi! ✨</div>
-</div>
-</div></section>
-<section class="section" id="experiencia"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Tres formas de acompañarte</span><h2>La aventura también puede cuidar de ti.</h2><p>Mishi combina una experiencia lúdica con herramientas digitales que invitan a detenerse, conversar y practicar el autocuidado.</p></div>
-<div class="feature-grid">
-<article class="feature reveal"><div class="feature-icon">💬</div><h3>Habla con Mishi</h3><p>Una experiencia conversacional con inteligencia artificial dentro del videojuego.</p><div class="feature-foot">✦ Conversación con IA</div></article>
-<article class="feature reveal"><div class="feature-icon">🌱</div><h3>Haz pequeñas misiones</h3><p>Actividades gamificadas que invitan a practicar hábitos positivos y acciones de autocuidado.</p><div class="feature-foot">✦ Explora a tu ritmo</div></article>
-<article class="feature reveal"><div class="feature-icon">💗</div><h3>Encuentra apoyo</h3><p>Un acceso rápido a un recurso audiovisual sobre primeros auxilios psicológicos.</p><div class="feature-foot">✦ Un recurso para momentos difíciles</div></article>
-</div>
-<div class="quote-band reveal"><span style="font-size:1.4rem">✧</span><span><b>Sin prisa, a tu ritmo.</b> Mishi propone una forma cercana de explorar el bienestar desde una experiencia interactiva.</span></div>
-</div></section>
-<section class="section" id="mundo"><div class="wrap world-layout">
-<div class="world-copy reveal"><span class="eyebrow">Dos protagonistas</span><h2>Alicia explora.<br><span style="color:var(--lav)">Mishi la acompaña.</span></h2><p>Mishi es una pequeña criatura slime con orejitas de gato y una hojita en la cabeza. Sigue a Alicia mientras recorre un entorno fantástico creado en 3D.</p>
-<div class="checklist"><div class="check"><div class="check-symbol">✦</div><div><strong>Un mundo por descubrir</strong><span>Entornos naturales, flores y rincones que invitan a explorar.</span></div></div><div class="check"><div class="check-symbol">♡</div><div><strong>Una compañía adorable</strong><span>Una pequeña presencia que acompaña a Alicia en el camino.</span></div></div><div class="check"><div class="check-symbol">☾</div><div><strong>Bienestar como propósito</strong><span>Una propuesta académica que explora el juego como puerta de entrada al autocuidado.</span></div></div></div>
-</div>
-<div class="screens" id="galeria">
-<figure class="screen reveal"><img src="mishi-mundo.png" alt="Captura real del videojuego con Alicia en un jardín de flores y estructuras de piedra."><figcaption>Explora el mundo · Vista en tercera persona</figcaption></figure>
-<figure class="screen reveal"><img src="mishi-personaje.png" alt="Mishi, una criatura amarilla de aspecto slime con orejas y una hojita."><figcaption>Tu compañero de aventura 💛</figcaption></figure>
-<figure class="screen reveal"><img src="mishi-unity.png" alt="Vista del personaje en el editor de Unity durante el desarrollo."><figcaption>Detrás de escena · Unity</figcaption></figure>
-</div>
-</div></section>
-<section class="section" id="proyecto"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Detrás de la magia</span><h2>Un proyecto de informática con propósito.</h2><p>Una propuesta de titulación que explora el diseño de una experiencia interactiva orientada al bienestar de estudiantes de educación superior.</p></div>
-<div class="tech-grid reveal"><div class="tech"><div class="tech-icon">🎮</div><strong>Unity 3D</strong><span>Entorno del videojuego</span></div><div class="tech"><div class="tech-icon">🤖</div><strong>OpenAI API</strong><span>Conversación con IA</span></div><div class="tech"><div class="tech-icon">🌿</div><strong>Gamificación</strong><span>Misiones de autocuidado</span></div><div class="tech"><div class="tech-icon">🎓</div><strong>Proyecto de título</strong><span>Ingeniería en Informática</span></div></div>
-<div class="section-head reveal" style="margin-top:58px;margin-bottom:27px"><span class="eyebrow">Un poquito más de detalle</span><h2>La magia tiene su lado técnico.</h2><p>Abre los apartados que quieras explorar; la información extra no ocupa toda la página de golpe.</p></div>
-<div class="accordions">
-<details class="accordion reveal"><summary>🧠 Enfoque de bienestar</summary><div class="accordion-body"><p>La propuesta acerca prácticas de autocuidado mediante una experiencia digital amable. Las misiones se inspiran en conceptos de bienestar y gamificación.</p></div></details>
-<details class="accordion reveal"><summary>💬 Inteligencia artificial</summary><div class="accordion-body"><p>La integración de una API de IA permite una experiencia conversacional con un personaje dentro del videojuego. No está planteada como diagnóstico ni terapia.</p></div></details>
-<details class="accordion reveal"><summary>🛠️ Herramientas utilizadas</summary><div class="accordion-body"><p><b>Unity 3D, C#, OpenAI API, VRoid Studio, UniVRM y Figma.</b> Estas herramientas apoyan el desarrollo del entorno, los personajes y la interacción.</p></div></details>
-<details class="accordion reveal"><summary>🌱 Posibles próximos pasos</summary><div class="accordion-body"><p>Ampliar las misiones, seguir mejorando la experiencia de usuario y evaluar la propuesta con participantes y orientación profesional.</p></div></details>
-</div>
-<div class="safety reveal"><div class="safety-icon">💜</div><p><strong>Una nota importante:</strong> Mishi es un prototipo académico orientado al bienestar estudiantil. No reemplaza la atención de profesionales de salud mental ni constituye una herramienta de diagnóstico o tratamiento. Ante una situación de riesgo, busca ayuda profesional o servicios de emergencia de tu localidad.</p></div>
-</div></section>
 
-<section class="section videos-section" id="demostraciones"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Luces, cámara… Mishi</span><h2>Un vistazo a la aventura.</h2><p>Pequeños fragmentos del prototipo y su desarrollo. Elige uno para verlo en YouTube o visita la playlist completa.</p></div>
-<div class="video-grid">
-<a class="video-card reveal" href="https://youtu.be/dlXU_IahopU" target="_blank" rel="noopener noreferrer" aria-label="Ver video 1: Conoce Mishi">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/dlXU_IahopU/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 01</span><strong>Conoce Mishi</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/T5KQeqBgrwo" target="_blank" rel="noopener noreferrer" aria-label="Ver video 2: Explorando el mundo">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/T5KQeqBgrwo/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 02</span><strong>Explorando el mundo</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/fpMdAi5Nn0o" target="_blank" rel="noopener noreferrer" aria-label="Ver video 3: La experiencia de juego">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/fpMdAi5Nn0o/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 03</span><strong>La experiencia de juego</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/_cfLRPfI7u8" target="_blank" rel="noopener noreferrer" aria-label="Ver video 4: Personajes y entorno">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/_cfLRPfI7u8/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 04</span><strong>Personajes y entorno</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/JL9prLLMgMA" target="_blank" rel="noopener noreferrer" aria-label="Ver video 5: Interacción en el juego">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/JL9prLLMgMA/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 05</span><strong>Interacción en el juego</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/1hSqgYML_ww" target="_blank" rel="noopener noreferrer" aria-label="Ver video 6: Mishi en acción">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/1hSqgYML_ww/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 06</span><strong>Mishi en acción</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/qPd3npeGM_A" target="_blank" rel="noopener noreferrer" aria-label="Ver video 7: Recorrido por el prototipo">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/qPd3npeGM_A/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 07</span><strong>Recorrido por el prototipo</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/pIdHgLZ9bTw" target="_blank" rel="noopener noreferrer" aria-label="Ver video 8: Detalles de la experiencia">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/pIdHgLZ9bTw/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 08</span><strong>Detalles de la experiencia</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/1T1iKlbJVDI" target="_blank" rel="noopener noreferrer" aria-label="Ver video 9: Demostración del proyecto">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/1T1iKlbJVDI/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 09</span><strong>Demostración del proyecto</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-<a class="video-card reveal" href="https://youtu.be/zg57-NAUB-Q" target="_blank" rel="noopener noreferrer" aria-label="Ver video 10: Un vistazo al desarrollo">
-<div class="video-thumb"><img src="https://img.youtube.com/vi/zg57-NAUB-Q/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
-<div class="video-info"><span class="video-number">DEMO 10</span><strong>Un vistazo al desarrollo</strong><span class="video-open">Ver en YouTube ↗</span></div>
-</a>
-</div>
-<div class="video-all reveal"><a class="btn btn-primary" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer">Ver la playlist completa ↗</a></div>
-</div></section>
+  <!-- Fondo de estrellas -->
+  <div class="starfield" aria-hidden="true">
+    <span class="star" style="top: 8%; left: 12%"></span>
+    <span class="star" style="top: 17%; left: 83%"></span>
+    <span class="star" style="top: 29%; left: 42%"></span>
+    <span class="star" style="top: 43%; left: 8%"></span>
+    <span class="star" style="top: 55%; left: 91%"></span>
+    <span class="star" style="top: 68%; left: 26%"></span>
+    <span class="star" style="top: 78%; left: 72%"></span>
+    <span class="star" style="top: 91%; left: 51%"></span>
+    <span class="star" style="top: 35%; left: 67%"></span>
+    <span class="star" style="top: 62%; left: 58%"></span>
+    <span class="star" style="top: 13%; left: 57%"></span>
+    <span class="star" style="top: 85%; left: 14%"></span>
+  </div>
 
-<section class="section" id="recursos"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Más allá del juego</span><h2>¿Quieres conocer el proyecto?</h2><p>Explora el prototipo, sus diseños y el material de presentación.</p></div>
-<div class="resource-grid">
-<a class="resource-link reveal" href="https://github.com/KaledSML/Mishi-HealthTech-App/" target="_blank" rel="noopener noreferrer"><span class="resource-icon">⌘</span><span><strong>Repositorio en GitHub</strong><span>Conoce el proyecto ↗</span></span></a>
-<a class="resource-link reveal" href="https://www.figma.com/file/1l4v79fGIjWj3kYdKvZxv1/Mishi?type=design&node-id=0%3A1&mode=design&t=emvDufgXFicg8Zvr-1" target="_blank" rel="noopener noreferrer"><span class="resource-icon">🎨</span><span><strong>Diseño en Figma</strong><span>Explora la propuesta visual ↗</span></span></a>
-<a class="resource-link reveal" href="https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><span class="resource-icon">📜</span><span><strong>Póster de defensa</strong><span>Material de presentación ↗</span></span></a>
-<a class="resource-link reveal" href="https://canva.link/bj6jjqdlc8j60y9" target="_blank" rel="noopener noreferrer"><span class="resource-icon">📚</span><span><strong>Memoria de título en Canva</strong><span>Consulta la memoria en formato interactivo ↗</span></span></a>
-<a class="resource-link reveal" href="https://www.youtube.com/watch?v=8aOUeTWVn2Y" target="_blank" rel="noopener noreferrer"><span class="resource-icon">🏅</span><span><strong>60 secondes pour convaincre</strong><span>Finalistas · AUF 2022 ↗</span></span></a>
-<a class="resource-link reveal" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer"><span class="resource-icon">▶</span><span><strong>Playlist de demostraciones</strong><span>Los videos de Mishi ↗</span></span></a>
-</div>
-</div></section>
-<section class="section" id="explorar"><div class="wrap"><div class="final-cta reveal"><span class="eyebrow">Una invitación al Mishi-verso</span><h2>¿Lista para descubrir<br>un pequeño mundo?</h2><p>Explora las demostraciones y conoce más sobre el proceso detrás de Mishi, desde la idea hasta el prototipo.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq" target="_blank" rel="noopener noreferrer">Ver playlist ↗</a><a class="btn btn-secondary" href="https://drive.google.com/file/d/1il1WAtQfs7X1WwVu0lvAb2VbyrTkBNln/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Ver el póster ↗</a></div></div></div></section>
-</main>
-<footer class="footer"><div class="wrap footer-inner"><span><strong>mishi.</strong> Un pequeño mundo para cuidar de ti.</span><span>Proyecto de titulación · Ingeniería en Informática · Universidad Bernardo O’Higgins</span></div></footer>
-<script>
-const revealItems=document.querySelectorAll('.reveal');
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.12});revealItems.forEach(el=>observer.observe(el))}else{revealItems.forEach(el=>el.classList.add('visible'))}
-</script>
-</body></html>
+  <!-- Navegación -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+
+      <a class="brand" href="#inicio" aria-label="Mishi, ir al inicio">
+        <span class="brand-icon">✦</span>
+        <span>Mishi</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Navegación principal">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#mundo">Nuestro mundo</a>
+        <a href="#demostraciones">Videos</a>
+        <a href="#proyecto">Proyecto</a>
+        <a href="#recursos">Recursos</a>
+        <a class="nav-cta" href="#explorar">Explorar ✦</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Bienestar emocional · Tecnología</span>
+
+          <h1>
+            Un pequeño mundo
+            <em>para cuidar de ti.</em>
+          </h1>
+
+          <p>
+            Mishi es una experiencia interactiva que busca acercar
+            el bienestar emocional a través de un mundo virtual
+            acogedor, la tecnología y un compañero muy especial.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#mundo">
+              ✦ Conoce a Mishi
+            </a>
+
+            <a class="btn btn-secondary" href="#demostraciones">
+              ▶ Ver demostraciones
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span class="tiny-stars">✦ ✦ ✦</span>
+            <span>Un espacio para explorar, aprender y cuidarte.</span>
+          </div>
+        </div>
+
+        <div class="art-stage reveal">
+          <div class="art-glow"></div>
+          <div class="orbit"></div>
+
+          <div class="game-art">
+            <img
+              src="mishi-mundo.png"
+              alt="Vista del mundo virtual de Mishi"
+            >
+
+            <div class="art-caption">
+              <div>
+                <strong>Tu pequeño refugio</strong>
+                <span>Un mundo hecho para descubrir</span>
+              </div>
+              <span>✦ Mishi World</span>
+            </div>
+          </div>
+
+          <div class="floating-mishi">
+            <img
+              src="mishi-personaje.png"
+              alt="Personaje Mishi"
+            >
+          </div>
+
+          <div class="bubble">¡Hola! ♡</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="section" id="experiencia">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <span class="eyebrow">La experiencia</span>
+          <h2>Un espacio para conectar contigo</h2>
+          <p>
+            Mishi combina exploración, acompañamiento y recursos
+            para construir una experiencia cercana y acogedora.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature reveal">
+            <div class="feature-icon">🌱</div>
+            <h3>Bienestar emocional</h3>
+            <p>
+              Un entorno pensado para invitar a la reflexión,
+              el autocuidado y el reconocimiento de las emociones.
+            </p>
+            <div class="feature-foot">✦ Un momento para ti</div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">🐱</div>
+            <h3>Un compañero virtual</h3>
+            <p>
+              Mishi acompaña el recorrido por un mundo diseñado
+              para descubrir, explorar e interactuar.
+            </p>
+            <div class="feature-foot">✦ Explora a tu ritmo</div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">✨</div>
+            <h3>Tecnología con propósito</h3>
+            <p>
+              Una propuesta que integra herramientas digitales
+              con una experiencia centrada en las personas.
+            </p>
+            <div class="feature-foot">✦ Innovación con sentido</div>
+          </article>
+
+        </div>
+
+        <div class="quote-band reveal">
+          <span>💜</span>
+          <span>
+            La tecnología también puede crear espacios para
+            <b>sentir, aprender y cuidarnos.</b>
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Mundo Mishi -->
+    <section class="section" id="mundo">
+      <div class="wrap world-layout">
+
+        <div class="world-copy reveal">
+          <span class="eyebrow">Conoce nuestro mundo</span>
+
+          <h2>Pequeños pasos, grandes descubrimientos.</h2>
+
+          <p>
+            El universo de Mishi está pensado como un espacio
+            visual e interactivo donde cada elemento forma parte
+            de una experiencia de exploración y bienestar.
+          </p>
+
+          <div class="checklist">
+
+            <div class="check">
+              <div class="check-symbol">✦</div>
+              <div>
+                <strong>Un entorno acogedor</strong>
+                <span>Un mundo visual que invita a explorar.</span>
+              </div>
+            </div>
+
+            <div class="check">
+              <div class="check-symbol">♡</div>
+              <div>
+                <strong>Una experiencia cercana</strong>
+                <span>Un diseño centrado en las personas.</span>
+              </div>
+            </div>
+
+            <div class="check">
+              <div class="check-symbol">☁</div>
+              <div>
+                <strong>Un proyecto en desarrollo</strong>
+                <span>Una propuesta que une creatividad y tecnología.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="screens reveal">
+
+          <figure class="screen">
+            <img
+              src="mishi-mundo.png"
+              alt="Escenario principal del mundo de Mishi"
+              loading="lazy"
+            >
+            <figcaption>El mundo de Mishi</figcaption>
+          </figure>
+
+          <figure class="screen">
+            <img
+              src="mishi-personaje.png"
+              alt="Diseño del personaje Mishi"
+              loading="lazy"
+            >
+            <figcaption>Conoce a Mishi</figcaption>
+          </figure>
+
+          <figure class="screen">
+            <img
+              src="mishi-unity.png"
+              alt="Desarrollo de Mishi en Unity"
+              loading="lazy"
+            >
+            <figcaption>Desarrollo en Unity</figcaption>
+          </figure>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tecnologías y proyecto -->
+    <section class="section" id="proyecto">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <span class="eyebrow">Detrás de Mishi</span>
+          <h2>Tecnología e intención</h2>
+          <p>
+            Conoce los elementos que dan forma a la propuesta
+            y las ideas que guían su desarrollo.
+          </p>
+        </div>
+
+        <div class="tech-grid reveal">
+
+          <div class="tech">
+            <div class="tech-icon">🎮</div>
+            <strong>Unity</strong>
+            <span>Entorno interactivo</span>
+          </div>
+
+          <div class="tech">
+            <div class="tech-icon">💻</div>
+            <strong>Desarrollo</strong>
+            <span>Implementación técnica</span>
+          </div>
+
+          <div class="tech">
+            <div class="tech-icon">🎨</div>
+            <strong>Diseño</strong>
+            <span>Identidad visual</span>
+          </div>
+
+          <div class="tech">
+            <div class="tech-icon">💜</div>
+            <strong>Bienestar</strong>
+            <span>Enfoque humano</span>
+          </div>
+
+        </div>
+
+        <div class="accordions" style="margin-top: 28px">
+
+          <details class="accordion reveal">
+            <summary>¿Qué es Mishi?</summary>
+            <div class="accordion-body">
+              <p>
+                Mishi es un proyecto que propone una experiencia
+                digital interactiva vinculada al bienestar emocional,
+                a través de un mundo virtual y un personaje que
+                acompaña la exploración.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion reveal">
+            <summary>¿Cuál es su propósito?</summary>
+            <div class="accordion-body">
+              <p>
+                Acercar recursos y experiencias relacionadas con
+                el autocuidado emocional mediante un entorno
+                digital accesible, amigable y atractivo.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion reveal">
+            <summary>¿Cómo se desarrolla?</summary>
+            <div class="accordion-body">
+              <p>
+                El proyecto integra diseño visual, desarrollo
+                interactivo y herramientas digitales para construir
+                su experiencia virtual.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion reveal">
+            <summary>¿En qué etapa se encuentra?</summary>
+            <div class="accordion-body">
+              <p>
+                Esta vitrina reúne materiales, demostraciones
+                y recursos del proyecto para mostrar su propuesta
+                y proceso de desarrollo.
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="safety reveal">
+          <div class="safety-icon">💛</div>
+          <p>
+            <strong>Un espacio de acompañamiento.</strong>
+            Mishi es un proyecto orientado al bienestar y al
+            autocuidado. No sustituye la atención de profesionales
+            de la salud mental ni constituye un servicio de emergencia.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Demostraciones -->
+    <section class="section" id="demostraciones">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <span class="eyebrow">Mishi en acción</span>
+          <h2>Explora las demostraciones</h2>
+          <p>
+            Una colección de videos para conocer distintas partes
+            del proyecto y su desarrollo.
+          </p>
+        </div>
+
+        <div class="video-grid">
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=dlXU_IahopU"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/dlXU_IahopU/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 01</span>
+              <strong>Presentación de Mishi</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=T5KQeqBgrwo"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/T5KQeqBgrwo/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 02</span>
+              <strong>Explorando el proyecto</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=fpMdAi5Nn0o"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/fpMdAi5Nn0o/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 03</span>
+              <strong>Demostración 03</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=_cfLRPfI7u8"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/_cfLRPfI7u8/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 04</span>
+              <strong>Demostración 04</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=JL9prLLMgMA"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/JL9prLLMgMA/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 05</span>
+              <strong>Demostración 05</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=1hSqgYML_ww"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/1hSqgYML_ww/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 06</span>
+              <strong>Demostración 06</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=qPd3npeGM_A"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/qPd3npeGM_A/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 07</span>
+              <strong>Demostración 07</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=pIdHgLZ9bTw"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/pIdHgLZ9bTw/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 08</span>
+              <strong>Demostración 08</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=1T1iKlbJVDI"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/1T1iKlbJVDI/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 09</span>
+              <strong>Demostración 09</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+          <a class="video-card reveal"
+             href="https://www.youtube.com/watch?v=zg57-NAUB-Q"
+             target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/zg57-NAUB-Q/hqdefault.jpg"
+                   alt="" loading="lazy">
+              <span class="play">▶</span>
+            </div>
+            <div class="video-info">
+              <span class="video-number">VIDEO 10</span>
+              <strong>Demostración 10</strong>
+              <span class="video-open">Ver en YouTube ↗</span>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="video-all">
+          <a
+            class="btn btn-secondary"
+            href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ▶ Ver toda la lista en YouTube
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Recursos -->
+    <section class="section" id="recursos">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <span class="eyebrow">Material complementario</span>
+          <h2>Conoce más sobre Mishi</h2>
+          <p>
+            Accede a los materiales y recursos relacionados
+            con el proyecto.
+          </p>
+        </div>
+
+        <div class="resource-grid">
+
+          <a class="resource-link reveal"
+             href="https://github.com/KaledSML/Mishi-HealthTech-App/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">⌘</div>
+            <div>
+              <strong>Repositorio GitHub</strong>
+              <span>Código y desarrollo del proyecto ↗</span>
+            </div>
+          </a>
+
+          <a class="resource-link reveal"
+             href="https://www.figma.com/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">🎨</div>
+            <div>
+              <strong>Diseño en Figma</strong>
+              <span>Explorar material de diseño ↗</span>
+            </div>
+          </a>
+
+          <a class="resource-link reveal"
+             href="https://drive.google.com/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">📄</div>
+            <div>
+              <strong>Póster del proyecto</strong>
+              <span>Consultar material complementario ↗</span>
+            </div>
+          </a>
+
+          <a class="resource-link reveal"
+             href="https://www.canva.com/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">🖌️</div>
+            <div>
+              <strong>Material en Canva</strong>
+              <span>Diseño y presentación ↗</span>
+            </div>
+          </a>
+
+          <a class="resource-link reveal"
+             href="https://www.youtube.com/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">▶</div>
+            <div>
+              <strong>Video de presentación</strong>
+              <span>Conocer la propuesta audiovisual ↗</span>
+            </div>
+          </a>
+
+          <a class="resource-link reveal"
+             href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"
+             target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">🎬</div>
+            <div>
+              <strong>Lista de demostraciones</strong>
+              <span>Ver los videos del proyecto ↗</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="section" id="explorar">
+      <div class="wrap">
+
+        <div class="final-cta reveal">
+          <span class="eyebrow">Gracias por llegar hasta aquí</span>
+
+          <h2>Un pequeño mundo, muchas posibilidades.</h2>
+
+          <p>
+            Mishi es una invitación a explorar cómo la tecnología,
+            el diseño y el bienestar pueden encontrarse en una
+            experiencia digital con propósito.
+          </p>
+
+          <div class="hero-actions" style="justify-content: center">
+            <a
+              class="btn btn-primary"
+              href="https://youtube.com/playlist?list=PL6ic-uQzzKmJ8V9HsY_NsBZbLNKJDE59_&si=-Ica11x2bnTvqebq"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Descubrir Mishi
+            </a>
+
+            <a class="btn btn-secondary" href="#inicio">
+              ↑ Volver al inicio
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong>✦ Mishi</strong>
+        <span> — Un pequeño mundo para cuidar de ti.</span>
+      </div>
+
+      <div>
+        Proyecto de titulación · Ingeniería en Informática
+        · Universidad Bernardo O’Higgins
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+
+</body>
+</html>
